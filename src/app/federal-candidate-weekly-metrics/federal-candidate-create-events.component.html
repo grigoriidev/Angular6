@@ -1,0 +1,414 @@
+<div class="container">
+    <app-header></app-header>
+</div>
+<div class="wrapper">
+  <div class="container">
+
+
+    <div class="page-wraper">
+
+      <div class="row">
+        <div class="col-md-12">
+          <h4 class="page-header"><h3>Create New Event</h3></h4>
+          <app-federal-candidate-header></app-federal-candidate-header>
+          <div class="form-container">
+            <div class="form-group row">
+              <div class="col-sm-12">
+                <h4 class="text-white text-center">Please Enter Events for Measurement Period 6 from 7/23/18 - 8/5/18</h4>
+              </div>
+            </div>
+            <form #eventFrm="ngForm" autocomplete="on" ngNativeValidate>
+              <div class="frm-row card">
+                <div class="form-group row">
+                  <div class="col-sm-5">
+                    <label>Event Name *</label>
+                    <input class="form-control" type="text" placeholder="Event Name" name="event_name1"
+                    #eventName1="ngModel" [(ngModel)]="event1.event_name" minlength="6" maxlength="128" required>
+                    <div *ngIf="eventName1.invalid && (eventName1.dirty || eventName1.touched)">
+                        <div *ngIf="eventName1.errors.required" class="text-danger">
+                            Event Name is required.
+                        </div>
+                        <div *ngIf="eventName1.errors.minlength" class="text-danger">
+                            Event Name should have 6 characters.
+                        </div>
+                        <div *ngIf="eventName1.errors.maxlength" class="text-danger">
+                            Event Name should not exceed 128 characters.
+                        </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <label>Location *</label>
+                    <input class="form-control" type="text" placeholder="Location" name="location1"
+                    #location1="ngModel" minlength="6" maxlength="128" [(ngModel)]="event1.location" required>
+                    <div *ngIf="location1.invalid && (location1.dirty || location1.touched)">
+                        <div *ngIf="location1.errors.required" class="text-danger">
+                            Location is required.
+                        </div>
+                        <div *ngIf="location1.errors.minlength" class="text-danger">
+                            Location should have 6 characters.
+                        </div>
+                        <div *ngIf="location1.errors.maxlength" class="text-danger">
+                            Location should not exceed 128 characters.
+                        </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-3">
+                    <label>Number of Attendees *</label>
+                    <input class="form-control" type="number" placeholder="Number of attendees" name="number_of_attendees1"
+                    #numberOfAttendees1="ngModel" [(ngModel)]="event1.number_of_attendees" min="0" required>
+                    <div *ngIf="numberOfAttendees1.invalid && (numberOfAttendees1.dirty || numberOfAttendees1.touched)">
+                        <div *ngIf="numberOfAttendees1.errors.required" class="text-danger">
+                            Number of Attendees is required.
+                        </div>
+                        <div *ngIf="numberOfAttendees1.errors.number" class="text-danger">
+                            Please enter a valid number.
+                        </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-sm-6">
+                    <label>Event Type *</label>
+                    <select class="form-control" id="state1" name="event_type_id"
+                            [(ngModel)]="event1.event_type_id" required>
+                      <option  selected disabled>Select Event Type</option>
+                      <option *ngFor="let type of eventTypes" value="{{type.id}}">{{type.name}}</option>
+                    </select>
+                  </div>
+                  <div class="col-sm-6">
+                    <label>Event Date *</label>
+                    <my-date-picker name="event_datetime1" [options]="myDatePickerOptions"
+                                    [(ngModel)]="event1.event_date"
+                                    #eventDatetime1="ngModel" required></my-date-picker>
+                    <div *ngIf="eventDatetime1.invalid && (eventDatetime1.dirty || eventDatetime1.touched)">
+                        <div *ngIf="eventDatetime1.errors.required" class="text-danger">
+                            Event Date is required.
+                        </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-6">
+                        <label>Attending State Legislator (At lease on required) *</label>
+                    </div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-sm-6">
+                    <select class="form-control" id="state1" name="attending_candidate_name1"
+                            [(ngModel)]="event1.attending_candidate_name1" required>
+                      <option  selected disabled>Select Attending State Legislator Candidate</option>
+                      <option *ngFor="let row of stateLegislators" value="{{row.id}}">{{row.name}}</option>
+                    </select>
+                  </div>
+                  <div class="col-sm-6">
+                    <select class="form-control" id="state2" name="attending_candidate_name2"
+                            [(ngModel)]="event1.attending_candidate_name2">
+                      <option  selected disabled>Select Attending State Legislator Candidate</option>
+                      <option *ngFor="let row of stateLegislators" value="{{row.id}}">{{row.name}}</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-sm-6">
+                    <select class="form-control" id="state3" name="attending_candidate_name3"
+                            [(ngModel)]="event1.attending_candidate_name3">
+                      <option  selected disabled>Select Attending State Legislator Candidate</option>
+                      <option *ngFor="let row of stateLegislators" value="{{row.id}}">{{row.name}}</option>
+                    </select>
+                  </div>
+                  <div class="col-sm-6">
+                    <select class="form-control" id="state4" name="attending_candidate_name4"
+                            [(ngModel)]="event1.attending_candidate_name4">
+                      <option  selected disabled>Select Attending State Legislator Candidate</option>
+                      <option *ngFor="let row of stateLegislators" value="{{row.id}}">{{row.name}}</option>
+                    </select>
+                  </div>
+                </div>
+                <!-- <div class="form-group row" [hidden]="showNewEventRow2">
+                  <div class="col-sm-12 text-right">
+                    <button type="button" (click)="showNewEventRow(2)" class="btn custom-btn">Add New</button>
+                  </div>
+                </div> -->
+              </div>
+              <!-- <div class="frm-row card" *ngIf="showNewEventRow2">
+                <div class="form-group row">
+                  <div class="col-sm-5">
+                    <label>Event Name *</label>
+                    <input class="form-control" type="text" placeholder="Event Name" name="event_name2"
+                    #eventName2="ngModel" [(ngModel)]="event2.event_name" minlength="6" maxlength="128" required>
+                    <div *ngIf="eventName2.invalid && (eventName2.dirty || eventName2.touched)">
+                        <div *ngIf="eventName2.errors.required" class="text-danger">
+                            Event Name is required.
+                        </div>
+                        <div *ngIf="eventName2.errors.minlength" class="text-danger">
+                            Event Name should have 6 characters.
+                        </div>
+                        <div *ngIf="eventName2.errors.maxlength" class="text-danger">
+                            Event Name should not exceed 128 characters.
+                        </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <label>Location *</label>
+                    <input class="form-control" type="text" placeholder="Location" name="location2"
+                    #location2="ngModel" minlength="6" maxlength="128" [(ngModel)]="event2.location" required>
+                    <div *ngIf="location2.invalid && (location2.dirty || location2.touched)">
+                        <div *ngIf="location2.errors.required" class="text-danger">
+                            Location is required.
+                        </div>
+                        <div *ngIf="location2.errors.minlength" class="text-danger">
+                            Location should have 6 characters.
+                        </div>
+                        <div *ngIf="location2.errors.maxlength" class="text-danger">
+                            Location should not exceed 128 characters.
+                        </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-3">
+                    <label>Number of Attendees *</label>
+                    <input class="form-control" type="number" placeholder="Number of attendees" name="number_of_attendees2"
+                    #numberOfAttendees2="ngModel" [(ngModel)]="event2.number_of_attendees" min="0" required>
+                    <div *ngIf="numberOfAttendees2.invalid && (numberOfAttendees2.dirty || numberOfAttendees2.touched)">
+                        <div *ngIf="numberOfAttendees2.errors.required" class="text-danger">
+                            Number of Attendees is required.
+                        </div>
+                        <div *ngIf="numberOfAttendees2.errors.number" class="text-danger">
+                            Please enter a valid number.
+                        </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-sm-6">
+                    <label>Event Type *</label>
+                    <select class="form-control" id="type2" name="event_type_id2"
+                            [(ngModel)]="event2.event_type_id" required>
+                      <option  selected disabled>Select Event Type</option>
+                      <option *ngFor="let type of eventTypes" value="{{type.id}}">{{type.name}}</option>
+                    </select>
+                  </div>
+                  <div class="col-sm-6">
+                    <label>Event Date *</label>
+                    <my-date-picker name="event_datetime2" [options]="myDatePickerOptions"
+                                    [(ngModel)]="event2.event_date"
+                                    #eventDatetime2="ngModel" required></my-date-picker>
+                    <div *ngIf="eventDatetime2.invalid && (eventDatetime2.dirty || eventDatetime2.touched)">
+                        <div *ngIf="eventDatetime2.errors.required" class="text-danger">
+                            Event Date is required.
+                        </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-6">
+                        <label>Attending State Legislator (At lease on required) *</label>
+                    </div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-sm-6">
+                    <select class="form-control" id="candidate21" name="attending_candidate_name21"
+                            [(ngModel)]="event2.attending_candidate_name1" required>
+                      <option  selected disabled>Select Attending State Legislator Candidate</option>
+                      <option *ngFor="let row of stateLegislators" value="{{row.id}}">{{row.name}}</option>
+                    </select>
+                  </div>
+                  <div class="col-sm-6">
+                    <select class="form-control" id="candidate22" name="attending_candidate_name22"
+                            [(ngModel)]="event2.attending_candidate_name2">
+                      <option  selected disabled>Select Attending State Legislator Candidate</option>
+                      <option *ngFor="let row of stateLegislators" value="{{row.id}}">{{row.name}}</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-sm-6">
+                    <select class="form-control" id="candidate23" name="attending_candidate_name23"
+                            [(ngModel)]="event2.attending_candidate_name3">
+                      <option  selected disabled>Select Attending State Legislator Candidate</option>
+                      <option *ngFor="let row of stateLegislators" value="{{row.id}}">{{row.name}}</option>
+                    </select>
+                  </div>
+                  <div class="col-sm-6">
+                    <select class="form-control" id="candidate24" name="attending_candidate_name24"
+                            [(ngModel)]="event2.attending_candidate_name4">
+                      <option  selected disabled>Select Attending State Legislator Candidate</option>
+                      <option *ngFor="let row of stateLegislators" value="{{row.id}}">{{row.name}}</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group row" [hidden]="showNewEventRow3">
+                  <div class="col-sm-12 text-right">
+                    <button type="button" (click)="showNewEventRow(3)" class="btn custom-btn">Add New</button>
+                  </div>
+                </div>
+              </div>
+              <div class="frm-row card" *ngIf="showNewEventRow3">
+                <div class="form-group row">
+                  <div class="col-sm-5">
+                    <label>Event Name *</label>
+                    <input class="form-control" type="text" placeholder="Event Name" name="event_name3"
+                    #eventName3="ngModel" [(ngModel)]="event3.event_name" minlength="6" maxlength="128" required>
+                    <div *ngIf="eventName3.invalid && (eventName3.dirty || eventName3.touched)">
+                        <div *ngIf="eventName3.errors.required" class="text-danger">
+                            Event Name is required.
+                        </div>
+                        <div *ngIf="eventName3.errors.minlength" class="text-danger">
+                            Event Name should have 6 characters.
+                        </div>
+                        <div *ngIf="eventName3.errors.maxlength" class="text-danger">
+                            Event Name should not exceed 128 characters.
+                        </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <label>Location *</label>
+                    <input class="form-control" type="text" placeholder="Location" name="location3"
+                    #location3="ngModel" minlength="6" maxlength="128" [(ngModel)]="event3.location" required>
+                    <div *ngIf="location3.invalid && (location3.dirty || location3.touched)">
+                        <div *ngIf="location3.errors.required" class="text-danger">
+                            Location is required.
+                        </div>
+                        <div *ngIf="location3.errors.minlength" class="text-danger">
+                            Location should have 6 characters.
+                        </div>
+                        <div *ngIf="location3.errors.maxlength" class="text-danger">
+                            Location should not exceed 128 characters.
+                        </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-3">
+                    <label>Number of Attendees *</label>
+                    <input class="form-control" type="number" placeholder="Number of attendees" name="number_of_attendees3"
+                    #numberOfAttendees3="ngModel" [(ngModel)]="event3.number_of_attendees" min="0" required>
+                    <div *ngIf="numberOfAttendees3.invalid && (numberOfAttendees3.dirty || numberOfAttendees3.touched)">
+                        <div *ngIf="numberOfAttendees3.errors.required" class="text-danger">
+                            Number of Attendees is required.
+                        </div>
+                        <div *ngIf="numberOfAttendees3.errors.number" class="text-danger">
+                            Please enter a valid number.
+                        </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-sm-6">
+                    <label>Event Type *</label>
+                    <select class="form-control" id="type3" name="event_type_id3"
+                            [(ngModel)]="event3.event_type_id" required>
+                      <option  selected disabled>Select Event Type</option>
+                      <option *ngFor="let type of eventTypes" value="{{type.id}}">{{type.name}}</option>
+                    </select>
+                  </div>
+                  <div class="col-sm-6">
+                    <label>Event Date *</label>
+                    <my-date-picker name="event_datetime3" [options]="myDatePickerOptions"
+                                    [(ngModel)]="event3.event_date"
+                                    #eventDatetime3="ngModel" required></my-date-picker>
+                    <div *ngIf="eventDatetime3.invalid && (eventDatetime3.dirty || eventDatetime3.touched)">
+                        <div *ngIf="eventDatetime3.errors.required" class="text-danger">
+                            Event Date is required.
+                        </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-6">
+                        <label>Attending State Legislator (At lease on required) *</label>
+                    </div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-sm-6">
+                    <select class="form-control" id="candidate31" name="attending_candidate_name31"
+                            [(ngModel)]="event3.attending_candidate_name1" required>
+                      <option  selected disabled>Select Attending State Legislator Candidate</option>
+                      <option *ngFor="let row of stateLegislators" value="{{row.id}}">{{row.name}}</option>
+                    </select>
+                  </div>
+                  <div class="col-sm-6">
+                    <select class="form-control" id="candidate32" name="attending_candidate_name32"
+                            [(ngModel)]="event3.attending_candidate_name2">
+                      <option  selected disabled>Select Attending State Legislator Candidate</option>
+                      <option *ngFor="let row of stateLegislators" value="{{row.id}}">{{row.name}}</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-sm-6">
+                    <select class="form-control" id="candidate33" name="attending_candidate_name33"
+                            [(ngModel)]="event3.attending_candidate_name3">
+                      <option  selected disabled>Select Attending State Legislator Candidate</option>
+                      <option *ngFor="let row of stateLegislators" value="{{row.id}}">{{row.name}}</option>
+                    </select>
+                  </div>
+                  <div class="col-sm-6">
+                    <select class="form-control" id="candidate34" name="attending_candidate_name34"
+                            [(ngModel)]="event3.attending_candidate_name4">
+                      <option  selected disabled>Select Attending State Legislator Candidate</option>
+                      <option *ngFor="let row of stateLegislators" value="{{row.id}}">{{row.name}}</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group row align-center">
+                <div class="col-sm-10">
+                </div>
+              </div>
+              <div class="form-group row">
+                <div class="col-sm-12">
+                  <h4 class="text-white text-center">Voter Engagement</h4>
+                </div>
+              </div>
+              <div class="form-group row card">
+                <div class="col-sm-6">
+                  <input class="form-control" type="text" placeholder="Number of Voters Engaged - Canvassing"
+                         name="voters_engaged_canvassing" [(ngModel)]="metric.voters_engaged_canvassing">
+                </div>
+                <div class="col-sm-6">
+                  <input class="form-control" type="file" placeholder="Screen-shot of NGP/VAN record.png"
+                         name="canvassing_file_path" [(ngModel)]="metric.canvassing_file_path">
+                </div>
+              </div>
+              <div class="form-group row card">
+                <div class="col-sm-6">
+                  <input class="form-control" type="text" placeholder="Number of Voters Engaged - Digital"
+                         name="voters_engaged_digital" [(ngModel)]="metric.voters_engaged_digital">
+                </div>
+                <div class="col-sm-6">
+                  <input class="form-control" type="file" placeholder="Image of Receipts.png"
+                         name="digital_file_path" [(ngModel)]="metric.digital_file_path">
+                </div>
+              </div>
+              <div class="form-group row align-center">
+                <div class="col-sm-12">
+                  <h4 class="text-white text-center">Digital Spend Ratio</h4>
+                </div>
+              </div>
+              <div class="form-group row card">
+                <div class="col-sm-6">
+                  <input class="form-control" type="text" placeholder="$ Spent on Digital"
+                         name="spent_amout" [(ngModel)]="metric.spent_amout">
+                </div>
+                <div class="col-sm-6">
+                  <input class="form-control" type="text" placeholder="$ Spent on Other Voter Engagement"
+                         name="other_spent_amount" [(ngModel)]="metric.other_spent_amount">
+                </div>
+              </div> -->
+              <div class="form-group">
+                <div class="text-right">
+                  <button type="button" (click)="locationSer.back()" class="btn custom-btn">Cancel</button>
+                  <button type="button" [disabled]="!eventFrm.form.valid" (click)="createNewEvent()" class="btn custom-btn">SUBMIT EVENT</button>
+                </div>
+                <div [hidden]="eventFrm.valid || eventFrm.pristine" class="text-danger">
+                  Please fill all the required fields.
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+<app-footer></app-footer>

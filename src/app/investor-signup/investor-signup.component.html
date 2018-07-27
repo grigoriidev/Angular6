@@ -1,0 +1,240 @@
+
+
+<div class="wrapper">
+    <div class="container">
+        <div class="page-wraper">
+            <!-- <div class="page-header">
+                <h4>{{pageTitle}} Registration</h4>
+            </div> -->
+
+            <div class="form-container">
+                <form #investorSignup="ngForm" autocomplete="on" (ngSubmit)="signupUser()"  ngNativeValidate>
+                    <div class="title">
+                        <h4>{{pageTitle}} Registration</h4>
+                        <h4>Statutory Information Required By Campaigns For FEC Reporting</h4>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-sm-12">
+                            <label>Contributor's Name & Address</label>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-4">
+                            <label>First Name *</label>
+                            <input class="form-control" type="text" placeholder="First" name="first_name" [(ngModel)]="Investor.first_name" required>
+                        </div>
+                        <div class="col-sm-4">
+                            <label>Middle Name</label>
+                            <input class="form-control" type="text" placeholder="Middle" name="middle_name" [(ngModel)]="Investor.middle_name">
+                        </div>
+                        <div class="col-sm-4">
+                            <label>Last Name *</label>
+                            <input class="form-control" type="text" placeholder="Last*" name="last_name" [(ngModel)]="Investor.last_name" required>
+                        </div>
+                    </div>
+                    
+                    <!-- <div class="form-group row">
+                        <div class="col-sm-6">
+                            <input class="form-control" type="text" placeholder="Email Address" name="email" [(ngModel)]="Investor.email" [disabled]=true
+                                required>
+                        </div>
+                        <div class="col-sm-6">
+                            <input class="form-control" type="tel" [textMask]="{mask: mask}"  [(ngModel)]="Investor.office_phone" name="phone"
+                                   #phone="ngModel" placeholder="Phone(__) __-____*" minlength="14" (input)="phoneValidation()"  required>
+
+
+                            <div *ngIf="phone_error" class="text-danger">
+                                Phone number is incomplete
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-6">
+                            <div class="input-group">
+                                    <input class="form-control" type="{{inputType}}" placeholder="Password *" [(ngModel)]="Investor.password" name="password" #password="ngModel"
+                                    pattern="(?=^.{6,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required>
+                                    
+                                    <div class="input-group-btn">
+                                            <button class="btn btn-default" type="button" (click)="changeType()">
+                                              <i class="glyphicon glyphicon-eye-open"></i>
+                                            </button>
+                                     </div>
+                                    
+                            </div>
+                            <div *ngIf="password.errors && (password.dirty || password.touched)" class="text-danger">
+                                        <div [hidden]="!password.errors.required">
+                                              Password is required!
+                                         </div>
+                                           <div [hidden]="!password.errors.pattern">
+                                                Password must be at least 6 characters long.
+                                                And It must contain at least one number, one uppercase and lowercase letter or a special character.
+                                        </div>
+                                    </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="input-group">
+                            <input class="form-control" type="{{inputType}}" placeholder="Confirm Password *" [(ngModel)]="Investor.password1" name="password1"
+                                #password1="ngModel"(input)="pwdMatchValidator()" required>
+                                <div class="input-group-btn">
+                                        <button class="btn btn-default" type="button" (click)="changeType()">
+                                          <i class="glyphicon glyphicon-eye-open"></i>
+                                        </button>
+                                 </div>
+                                </div>
+                                <div *ngIf="mismacth" class="text-danger">
+                                            Password Doesn't Match!
+                                         </div>
+                            
+                        </div>
+                    </div> -->
+                    <div class="form-group row">
+                        <div class="col-sm-4">
+                            <label>Street *</label>
+                            <input class="form-control" type="text" placeholder="Street Address *"
+                                   [(ngModel)]="Investor.office_street" name="officeStreet"
+                                   #officeStreet="ngModel" required>
+                            <div [hidden]="officeStreet.valid || officeStreet.pristine" class="text-danger">
+                                Street Address is required
+                            </div>
+                        </div>
+                        <div class="col-sm-2">
+                            <label>Suite/Unit </label>
+                            <input class="form-control" type="text" placeholder="Address Line2"
+                                   [(ngModel)]="Investor.office_address" name="office_address2">
+                        </div>
+                        <div class="col-sm-2">
+                            <label>City *</label>
+                            <input class="form-control" type="text" placeholder="City *"
+                                   [(ngModel)]="Investor.office_city" name="officeCity" #officeCity="ngModel"
+                                   required>
+                            <div [hidden]="officeCity.valid || officeCity.pristine" class="text-danger">
+                                City is required
+                            </div>
+                        </div>
+                        <div class="col-sm-2">
+                            <label>State *</label>
+                            <select class="form-control" id="state"
+                                    [(ngModel)]="Investor.office_state1" name="officeState1"
+                                    #officeState1="ngModel" required>
+                                    <option value="">Select State *</option>
+                                    <option value="AL">Alabama</option>
+                                     <option value="AK">Alaska</option>
+                                     <option value="AS">American Samoa</option>
+                                     <option value="AZ">Arizona</option>
+                                     <option value="AR">Arkansas</option>
+                                     <option value="CA">California</option>
+                                     <option value="CO">Colorado</option>
+                                     <option value="CT">Connecticut</option>
+                                     <option value="DE">Delaware</option>
+                                     <option value="DC">District of Columbia</option>
+                                     <option value="FL">Florida</option>
+                                     <option value="GA">Georgia</option>
+                                     <option value="GU">Guam</option>
+                                     <option value="HI">Hawaii</option>
+                                     <option value="ID">Idaho</option>
+                                     <option value="IL">Illinois</option>
+                                     <option value="IN">Indiana</option>
+                                     <option value="IA">Iowa</option>
+                                     <option value="KS">Kansas</option>
+                                     <option value="KY">Kentucky</option>
+                                     <option value="LA">Louisiana</option>
+                                     <option value="ME">Maine</option>
+                                     <option value="MD">Maryland</option>
+                                     <option value="MH">Marshall Islands</option>
+                                     <option value="MA">Massachusetts</option>
+                                     <option value="MI">Michigan</option>
+                                     <option value="FM">Micronesia</option>
+                                     <option value="MN">Minnesota</option>
+                                     <option value="MS">Mississippi</option>
+                                     <option value="MO">Missouri</option>
+                                     <option value="MT">Montana</option>
+                                     <option value="NE">Nebraska</option>
+                                     <option value="NV">Nevada</option>
+                                     <option value="NH">New Hampshire</option>
+                                     <option value="NJ">New Jersey</option>
+                                     <option value="NM">New Mexico</option>
+                                     <option value="NY">New York</option>
+                                     <option value="NC">North Carolina</option>
+                                     <option value="ND">North Dakota</option>
+                                     <option value="MP">Northern Marianas</option>
+                                     <option value="OH">Ohio</option>
+                                     <option value="OK">Oklahoma</option>
+                                     <option value="OR">Oregon</option>
+                                     <option value="PW">Palau</option>
+                                     <option value="PA">Pennsylvania</option>
+                                     <option value="RI">Rhode Island</option>
+                                     <option value="SC">South Carolina</option>
+                                     <option value="SD">South Dakota</option>
+                                     <option value="TN">Tennessee</option>
+                                     <option value="TX">Texas</option>
+                                     <option value="UT">Utah</option>
+                                     <option value="VT">Vermont</option>
+                                     <option value="VA">Virginia</option>
+                                     <option value="VI">Virgin Islands</option>
+                                     <option value="WA">Washington</option>
+                                     <option value="WV">West Virginia</option>
+                                     <option value="WI">Wisconsin</option>
+                                     <option value="WY">Wyoming</option>
+                            </select>
+                            <div [hidden]="officeState1.valid || officeState1.pristine" class="text-danger">
+                                State is required
+                            </div>
+                        </div>
+                        <div class="col-sm-2">
+                            <label>Postal Code *</label>
+                            <input class="form-control" type="text" placeholder="Postal Code *"
+                                   [(ngModel)]="Investor.office_postal_code" name="officePostalCode"
+                                   #officePostalCode="ngModel" minlength="5" maxlength="5" (keypress)="numberOnly($event)" required>
+                            <div *ngIf="officePostalCode.invalid && (officePostalCode.dirty || officePostalCode.touched)"
+                                    class="text-danger">
+                                <div *ngIf="officePostalCode.errors.required">
+                                    Postal Code is required.
+                                </div>
+                                <div *ngIf="officePostalCode.errors.minlength">
+                                    Postal Code should have at least 5 characters.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-12">
+                            <label>Federal regulations require that all contributors provide their employment information. 
+                                If you are not employed, enter 'none' in the occupation and employer boxes. </label>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-6">
+                            <label>Occupation *</label>
+                            <input class="form-control" type="text" placeholder="Occupation" name="occupation" [(ngModel)]="Investor.occupation" required>
+                        </div>
+                        <div class="col-sm-6">
+                            <label>Employer *</label>
+                            <input class="form-control" type="text" placeholder="Employer" name="employer" [(ngModel)]="Investor.employer" required>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-12">
+                            <input type="checkbox" name="confirmStatment" [(ngModel)] = "is_statuary">
+                            <label style="margin: 5px 10px ">Check this box to confirm that the following statements are true and accurate. </label>
+                            <ul class="confirmStatment" style="list-style-type: decimal;">
+                                <li>I am a United State citizen or a permanent resident alien.</li>
+                                <li>This contribution is not made from the general  treasury funds of a corporation, labor organization or national bank.</li>
+                                <li>This contribution is not made from the treasury of an entity or person who is a federal contractor.</li>
+                                <li>The funds i am donating are not being provided to me  by another person or entity for the purpose of making this contribution.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="form-group text-right">
+                    <button type="submit" [disabled]="!investorSignup.form.valid || mismacth || phone_error || !is_statuary" class="btn custom-btn">SUBMIT STATUTORY</button>
+                    <div [hidden]="investorSignup.valid || investorSignup.pristine" class="text-danger">
+                        * Please fill all the required fields.
+                    </div>
+                </div>
+                </form>
+                
+            </div>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>

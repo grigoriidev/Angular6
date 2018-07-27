@@ -1,0 +1,12 @@
+
+
+.table{
+    color:#ffffff;
+}
+.table a{
+    color: #174e91;
+}
+.table>thead>tr>th{
+    padding: 10px 8px;
+}
+

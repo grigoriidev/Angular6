@@ -1,0 +1,35 @@
+<div class="investor-home-header">
+  <button type="button" class="btn btn-outline-secondary mr-2 " *ngIf="getPermissionStatus('investorContactPaymentInformation');">
+    <a routerLink="/investor-contact" routerLinkActive="active">Account & Payment Information</a>
+  </button>
+  <button type="button" class="btn btn-outline-secondary mr-2" *ngIf="getPermissionStatus('investorBiWeeklyContributionConfirmation');">
+    <a routerLink="/investor-contribution" routerLinkActive="active">Bi-Weekly Contribution Confirmation</a>
+  </button>
+  <button type="button" class="btn btn-outline-secondary mr-2" *ngIf="getPermissionStatus('investorCampaignScoreboard');">
+    <a routerLink="/investor-scoreboard" routerLinkActive="active">Campaign Scoreboard</a>
+  </button>
+  <button type="button" class="btn btn-outline-secondary mr-2" *ngIf="getPermissionStatus('investorContributionReports');">
+    <a routerLink="/investor-reports" routerLinkActive="active">Contribution Reports</a>
+  </button>
+  <!-- <button type="button" class="btn btn-outline-secondary mr-2" *ngIf="getPermissionStatus('investorPledge');">
+    <a routerLink="/investor-pledge">Investor Pledge</a>
+  </button> -->
+  <button type="button" class="btn btn-outline-secondary mr-2" *ngIf="getPermissionStatus('investorPledge');">
+    <a routerLink="/prior-contributions" routerLinkActive="active">Prior Contributions</a>
+  </button>
+  <button type="button" class="btn btn-outline-secondary mr-2" *ngIf="getPermissionStatus('investorPastMetrics');">
+    <a routerLink="/review-past-metrics" routerLinkActive="active">Review Past Metrics</a>
+  </button>
+  <button type="button" class="btn btn-outline-secondary mr-2" *ngIf="getPermissionStatus('investorPastSurveys');">
+    <a routerLink="/review-past-survey" routerLinkActive="active">Review Past Surveys</a>
+  </button>
+  <button type="button" class="btn btn-outline-secondary mr-2" *ngIf="getPermissionStatus('investorManageInvitations');">
+    <a routerLink="/manage-invitations/2" routerLinkActive="active">Manage Invitations</a>
+  </button>
+  <button type="button" class="btn btn-outline-secondary mr-2" *ngIf="getPermissionStatus('investorPledge');">
+    <a routerLink="/pledge-biweekly-contributions" routerLinkActive="active">Pledge Biweekly Contributions</a>
+  </button>
+  <!-- <button type="button" class="btn btn-outline-secondary mr-2">
+    <a routerLink="/settings">Settings</a>
+  </button> -->
+</div>

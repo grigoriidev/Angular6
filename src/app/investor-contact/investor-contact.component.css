@@ -1,0 +1,24 @@
+.reset-frm-field{
+    padding: 16px;
+    border: 1px solid #7c94b2;
+    margin:2%;
+}
+.reset-legend{
+    width: auto;
+    color: #fff;
+    font-size: 15px;
+    padding: 7px 20px;
+    border-radius: 10px;
+    /* text-align: center; */
+    border: 0;
+    background: #002554;
+}
+.edit-profile-btn{
+    width: 20%;
+}
+.reset-frm-field .page-header{
+    color: #ffffff;
+}
+.reset-frm-field p{
+    color: #ffffff;
+}

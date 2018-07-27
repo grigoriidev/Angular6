@@ -1,0 +1,36 @@
+<div class="investor-home-header">
+  <button type="button" class="btn btn-outline-secondary mr-2 active" *ngIf="getPermissionStatus('blueanglesContactPaymentInformation');">
+    <a routerLink="/blue-angels-contact" routerLinkActive="active">Account & Payment Information</a>
+  </button>
+  <button type="button" class="btn btn-outline-secondary mr-2" *ngIf="getPermissionStatus('blueanglesBiWeeklyContributionConfirmation');">
+    <a routerLink="/blue-angels-contribution" routerLinkActive="active">Bi-Weekly Contribution Confirmation</a>
+  </button>
+  <button type="button" class="btn btn-outline-secondary mr-2" *ngIf="getPermissionStatus('blueanglesCampaignScoreboard');">
+    <a routerLink="/blue-angels-scoreboard" routerLinkActive="active">Campaign Scoreboard</a>
+  </button>
+  <button type="button" class="btn btn-outline-secondary mr-2" *ngIf="getPermissionStatus('blueanglesContributionReports');">
+    <a routerLink="/blue-angels-report" routerLinkActive="active">Contribution Reports</a>
+  </button>
+  <button type="button" class="btn btn-outline-secondary mr-2" *ngIf="getPermissionStatus('blueanglesReviewQuestionnarieList');">
+    <a routerLink="/blue-angels-review" routerLinkActive="active">Review Questionnaires</a>
+  </button>
+  <button type="button" class="btn btn-outline-secondary mr-2" *ngIf="getPermissionStatus('blueanglesManageInvitations');">
+    <a routerLink="/manage-invitations/1" routerLinkActive="active">Manage Invitations</a>
+  </button>
+  <button type="button" class="btn btn-outline-secondary mr-2" *ngIf="getPermissionStatus('blueanglesPledge');">
+    <a routerLink="/prior-contributions" routerLinkActive="active">Prior Contributions</a>
+  </button>
+  <button type="button" class="btn btn-outline-secondary mr-2" *ngIf="getPermissionStatus('blueanglesPledge');">
+    <a routerLink="/pledge-biweekly-contributions" routerLinkActive="active">Pledge Biweekly Contributions</a>
+  </button>
+  <!-- <button type="button" class="btn btn-outline-secondary mr-2" *ngIf="getPermissionStatus('blueanglesPledge');">
+    <a routerLink="/investor-pledge">Investor Pledge</a>
+  </button> -->
+  <!--
+  <button type="button" class="btn btn-outline-secondary mr-2" *ngIf="getPermissionStatus('blueanglesManageInvitations');">
+    <a routerLink="/manage-invitations/1">Manage Invitations</a>
+  </button>
+  <button type="button" class="btn btn-outline-secondary mr-2" *ngIf="getPermissionStatus('blueanglesSettings');">
+    <a routerLink="/settings">Settings</a>
+  </button>-->
+</div>

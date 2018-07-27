@@ -1,0 +1,69 @@
+<div class="container">
+        <app-header></app-header>
+    </div>
+<div class="wrapper">
+    <div class="container">
+        <div class="page-wraper">
+            <div class="page-header"><h4>View Metric</h4></div>
+            <br/>
+            <app-federal-candidate-header></app-federal-candidate-header>
+            <div class="form-container">
+                <div class="form-group row">
+                    <div class="col-sm-12">
+                        <h4 class="text-white text-center">Metrics & Events for Measurement Period 6 from 7/23/18 - 8/5/18</h4>
+                    </div>
+                </div>
+                <div class="weekly-report card">
+                    <div class="form-group ">
+                        <div class="row">
+                            <div class="col-sm-6" *ngFor="let row of weeklyMetrics.metrics | slice:0:2">
+                                <p>{{row.metric_name}}: {{row.value}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <div class="row">
+                            <div class="col-sm-6" *ngFor="let row of weeklyMetrics.metrics | slice:2:4">
+                                <p>{{row.metric_name}}: {{row.value}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <div class="row">
+                            <div class="col-sm-12 text-right">
+                                <button type="button" (click)="locationSer.back()" class="btn custom-btn">GO BACK</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="weekly-report card">
+                    <div class="form-group table-responsive">
+                        <table class="table ">
+                            <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Event Name</th>
+                                <th>Location</th>
+                                <th>Number of attendees</th>
+                                <th>Event Type</th>
+                                <th>Date</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr *ngFor="let event of weeklyMetrics.events; let rowNumber = index;">
+                                <td>{{rowNumber+1}}</td>
+                                <td>{{event.event_name}}</td>
+                                <td>{{event.event_location}}</td>
+                                <td>{{event.num_of_attendees}}</td>
+                                <td>{{event.event_type}}</td>
+                                <td>{{event.event_date | date:"d/M/y"}}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>

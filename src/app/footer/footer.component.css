@@ -1,0 +1,15 @@
+ul.footer-nav{
+    list-style: none;
+}
+.footer-nav li {
+    display: inline-block;
+    margin: 10px 0;
+    cursor: pointer;
+}
+.footer-nav li+li:before{
+    content: '|';
+    margin: auto 5px;
+}
+.footer-nav li a{
+    color: #ffffff;
+}

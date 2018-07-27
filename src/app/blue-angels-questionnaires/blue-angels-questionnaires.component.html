@@ -1,0 +1,42 @@
+<div class="container">
+    <app-header></app-header>
+</div>
+<div class="wrapper">
+  <div class="container">
+    <div class="page-wraper">
+     <div class="row">
+       <div class="col-md-12">
+         <div class="page-header"><h3>{{title}}</h3></div>
+
+         <app-blue-angels-header></app-blue-angels-header>
+         <div class="form-container">
+           <div >
+             <div class="table-responsive">
+               <table class="table">
+                 <thead>
+                 <tr>
+                   <th>Candidate</th>
+                   <th>Running For</th>
+                   <th>Rating</th>
+                   <th>Average Rating</th>
+                 </tr>
+                 </thead>
+                 <tbody>
+                 <tr *ngFor="let candidate of candidates">
+                   <td><a routerLink="/review-candidate/{{candidate.camp_id}}"
+                          class="text-white">{{candidate.name}}</a></td>
+                   <td>{{candidate.acct_class_name | titlecase}}</td>
+                   <td>{{(candidate.rating_name ==null)?'Not Yet Rated': candidate.rating_name}}</td>
+                   <td>{{(candidate.overall_rating ==null)?'No One Rated': candidate.overall_rating}}</td>
+                 </tr>
+                 </tbody>
+               </table>
+             </div>
+           </div>
+         </div>
+       </div>
+     </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

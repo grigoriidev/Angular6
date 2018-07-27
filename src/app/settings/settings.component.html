@@ -1,0 +1,52 @@
+<div class="container">
+        <app-header></app-header>
+    </div>
+<div class="wrapper">
+    <div class="container">
+        <div class="page-wraper">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="page-header"><h4>Settings - {{model.username}}</h4></div>
+
+                </div>
+                <div class="col-md-6">
+                    <div class="investor-home-header text-right">
+                        <button type="button" class="btn btn-outline-secondary mr-2 active" >
+                            <a routerLink="/investor-contact">Profile</a>
+                        </button>
+                        <button type="button" class="btn btn-outline-secondary mr-2">
+                            <a routerLink="/change-password">Change Password</a>
+                        </button>
+                        <!--<button type="button" (click)="logoutUser()" class="btn btn-outline-secondary mr-2">
+                            <a (click)="logoutUser()">Logout</a>
+                        </button>-->
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-container">
+                <form>
+                    <div class="form">
+                        <h3>Two Factor Authentication</h3>
+                        <div class="form-group text-center" [hidden]="!model.g2fa_status">
+                            <div class="col-sm-12">
+                                <img [src]="model.g2fa_url">
+                            </div>
+                        </div>
+                        <div class="form-group  text-center">
+                            <div class="checkbox">
+                                <label><input type="checkbox" [(ngModel)]="model.g2fa_status" value="false" name="g2faStatus"> Enable 2nd Level Authentication</label>
+                                <button type="button" class="btn custom-btn" (click)="activateGoogle2fa()">Save Changes</button>
+                            </div>
+                            <div class="clearfix">&nbsp;</div>
+
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+<app-footer></app-footer>

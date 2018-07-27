@@ -1,0 +1,619 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~font-awesome/css/font-awesome.css";
+
+html{ height:90%; }
+
+body{ min-height:90%; padding:0; margin:0; position:relative; }
+
+body::after{ content:''; display:block; height:100px; }
+
+
+body{
+    background: #165db7;
+    background: linear-gradient(to right , #165db7, #4cb6d0);
+    height: 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
+    background-size: cover;
+}
+
+.wrapper{
+    background: #ffffff;
+    /* margin: 2% auto; */
+    /*padding:5% 5% 0; */
+    min-height:85%;
+}
+
+.text-color{
+    color: #165db7;
+}
+.btn.custom-btn{
+    text-transform: uppercase;
+    color: #ffffff;
+    background: #155cb6;
+    border-radius:0;
+    border: 1px solid #155cb6;
+    box-shadow: 0 0 1px 1px #155cb6;
+    padding: 5px 30px;
+    margin: 10px;
+
+}
+
+ .form-control:-ms-input-placeholder, textarea:-ms-input-placeholder {
+    /*color: #3593c7;*/
+    font-size: 12px;
+    opacity: 0.6;
+}
+ .form-control::-moz-placeholder, textarea::-moz-placeholder {
+    /*color: #3593c7;*/
+    font-size: 12px;
+    opacity: 0.6;
+}
+ .form-control::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+    /*color: #3593c7;*/
+    font-size: 12px;
+    opacity: 0.6;
+}
+ .form-control{
+    box-shadow: none;
+    border-radius: 0;
+    /* border: 0; */
+    background: #ffffff;
+
+}
+.form-container{
+    background: #165db7;
+    background: linear-gradient(to right , #165db7, #4cb6d0);
+    padding:2% 2%;
+    margin: 10px;
+}
+
+.form-container .form-control{
+    margin:  auto;
+}
+ .form-group{
+    margin: 20px auto;
+}
+.form-control{
+    color:#3593c7;
+}
+ .form-title{
+    color: #ffffff;
+}
+ label{
+    color: #165db7;
+    font-weight: normal;
+    font-size: 15px;
+    margin: 5px auto;
+}
+footer{
+    position:absolute;
+    color: #ffffff;
+    width: 100%;
+    /*bottom: 0;*/
+  /*  bottom:10px;
+    width:100%;
+    color: #ffffff;
+    padding: 10px;*/
+
+}
+.page-header{
+    /*text-align: center;*/
+    color: #3593c7;
+    border: 0;
+    margin: 0 10px;
+    padding: 0;
+
+}
+.dropdown-menu>li>a{
+    cursor: pointer;
+    color: #1d65ba;
+    padding:10px 20px;
+}
+.dropdown img{
+    width: 35px;
+    /*background: #277991;*/
+    /*padding: 5px;*/
+}
+.nav>li>a:focus, .nav>li>a:hover{
+    background: transparent;
+}
+.page-wraper{
+    margin: 5% auto;
+}
+.section{
+    background: #165db7;
+    background: -webkit-gradient(linear , left top, right top , from(#165db7), to(#4cb6d0));
+    background: linear-gradient(to right , #165db7, #4cb6d0);
+    padding: 2% 2% 0;
+    margin: 10px 10px 5%;
+    /*min-width: 500px;*/
+}
+.section .ng2-pagination li{
+    padding:5px 10px;
+}
+.section .ng2-pagination .current, .section .ng2-pagination a:hover{
+    padding: 5px 10px; background: #1a62b9; color: #fefefe; cursor: default;
+}
+.section .ng2-pagination a{
+    padding: 5px 10px;
+
+}
+label.form-title{
+    color: #ffffff;
+}
+[type="radio"]:checked,
+[type="radio"]:not(:checked) {
+    position: absolute;
+    left: -9999px;
+}
+[type="radio"]:checked + label,
+[type="radio"]:not(:checked) + label
+{
+    position: relative;
+    padding-left: 28px;
+    cursor: pointer;
+    line-height: 20px;
+    display: inline-block;
+    color: #666;
+    font-size: 14px;
+    font-weight: normal;
+}
+[type="radio"]:checked + label:before,
+[type="radio"]:not(:checked) + label:before {
+    content: '';
+    position: absolute;
+    left: 1px;
+    top: 1px;
+    width: 18px;
+    height: 18px;
+    border: 1px solid #3691c6;
+    border-radius: 100%;
+    background: #fff;
+}
+[type="radio"]:checked + label:after,
+[type="radio"]:not(:checked) + label:after {
+    content: '';
+    width: 18px;
+    height: 18px;
+    background: #155cb6;
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    border-radius: 100%;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+[type="radio"]:not(:checked) + label:after {
+    opacity: 0;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+}
+[type="radio"]:checked + label:after {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+}
+.form-one{
+    max-width: 900px;
+    margin: 2% auto;
+}
+.form-one .form-control {
+    border: 1px solid #165db7;
+}
+.custom-select select {
+    display: inline-block;
+    border: 1px solid #236fbc;
+    padding: 4px 3px 3px 10px;
+    margin: 0;
+    font: inherit;
+    outline: none;
+    line-height: 1.2;
+    background: #fff;
+    -webkit-appearance: none;
+    border-radius: 0;
+    color: #979797;
+}
+
+/* for Webkit's CSS-only solution */
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    .custom-select select {
+        padding-right:30px;
+    }
+}
+
+/* Since we removed the default focus styles, we have to add our own */
+.custom-select select:focus {
+    -webkit-box-shadow: 0 0 3px 1px #c00;
+    -moz-box-shadow: 0 0 3px 1px #c00;
+    box-shadow: 0 0 3px 1px #c00;
+}
+
+/* Select arrow styling */
+.custom-select:after {
+    content: "▼";
+    position: absolute;
+    top: 31px;
+    right: 0;
+    bottom: 0;
+    font-size: 56%;
+    line-height: 35px;
+    padding: 0 12px;
+    background: #165db7;
+    color: white;
+    pointer-events: none;
+    border-radius: 0;
+}
+
+.no-pointer-events .custom-select:after {
+    content: none;
+}
+.nav-item{
+    display: block;
+    background: #ccc;
+    min-width: 150px;
+    text-align: center;
+    margin: 10px auto;
+}
+ul.role-type{
+    list-style: none;
+    text-align: center;
+}
+.role-type li{
+    display: inline;
+    margin: 3%;
+}
+.form-control:-ms-input-placeholder, textarea:-ms-input-placeholder {
+    color: #3593c7;
+}
+.form-control::-moz-placeholder, textarea::-moz-placeholder {
+    color: #3593c7;
+}
+.form-control::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+    color: #3593c7;
+}
+.form-control{
+    box-shadow: none;
+    border-radius: 0;
+    border: 0;
+    background: #ffffff;
+
+}
+.form-container .form-control{
+    margin:  auto;
+}
+.form-group{
+    margin: 20px auto;
+}
+.form-control{
+    color:#3593c7;
+}
+.form-title{
+    color: #ffffff;
+}
+.form-container label{
+    color: #ffffff;
+    font-weight: normal;
+    font-size: 13px;
+    margin: 0;
+}
+.custom-btn{
+    text-transform: uppercase;
+    color: #ffffff;
+    background: #155cb6;
+    border-radius:0;
+    border: 1px solid #155cb6;
+    box-shadow: 0 0 1px 1px #155cb6;
+    padding: 5px 20px;
+    margin: 10px;
+
+}
+.form-check-label{
+    margin: 5px 10px;
+}
+.table{
+    color:#ffffff;
+}
+.table a{
+    color: #174e91;
+}
+.table>thead>tr>th{
+    padding: 10px 8px;
+    font-size:15px;
+}
+.tab-content>.active .form-container{
+    color: #ffffff;
+}
+ul.nav-fill{
+    list-style: none;
+    background: #eaeaea;
+    margin: auto auto 5%;
+    padding: 0;
+}
+.nav-fill li{
+    display: inline-block;
+    padding: 0;
+    text-align: center;
+    margin: 3px;
+
+}
+.nav-fill .fa{
+    display: block;
+    background: #165db7;
+    background: linear-gradient(to right , #165db7, #4cb6d0);
+    padding: 10px;
+    border-radius: 50%;
+    color: #ffffff;
+    font-size: 20px;
+    margin: 10px auto;
+    width: 40px;
+    height: 40px;
+}
+.nav-item .active{
+    color: #ffffff;
+}
+.nav-item .active{
+    background: #4cb6d0;
+    background: linear-gradient(to right , #4cb6d0, #165db7) !important;
+}
+.nav-item .active .fa{
+    background: #ffffff;
+    /*background: -webkit-linear-gradient(#165db7, #4cb6d0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;*/
+    color: #155cb6;
+}
+
+
+@media only screen and (min-width: 300px) {
+
+    .nav-fill .active:after{
+        content: '';
+        position: relative;
+        left: 0;
+        top: 43px;
+        width: 0;
+        height: 0;
+        border-left: 0;
+        border-right: 0;
+        border-top: 0;
+    }
+    .nav-fill li{
+        width: 100%;
+    }
+}
+@media only screen and (min-width: 768px) {
+
+
+    .nav-fill .active:after {
+        content: '';
+        position: relative;
+        left: 0;
+        top: 43px;
+        width: 0;
+        height: 0;
+        border-left: 15px solid transparent;
+        border-right: 15px solid transparent;
+        border-top: 15px solid #46abce;
+    }
+    .nav-fill li{
+        width: auto;
+    }
+}
+.nav-item{
+    background: transparent;
+}
+/*.nav-item a, .nav.nav-pills>li>a{
+    font-size: 12px;
+    min-width: 180px;
+}*/
+.review-text{
+    text-align: center;
+    color:#ffffff;
+    margin: 10vh auto;
+}
+.weekly-report{
+    color: #ffffff;
+}
+.btn-outline-secondary{
+    background: #3593c7;
+    margin:5px 3px;
+}
+.btn-outline-secondary a{
+    color: #ffffff;
+    font-size: 13px;
+}
+.form{
+    color: #ffffff;
+    padding: 5%;
+    max-width: 500px;
+    margin: auto;
+}
+.text-white{
+    color:#ffffff;
+
+}
+.label {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 15px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    color: #165db7;
+}
+
+/* Hide the browser's default checkbox */
+.label input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: #ccc;
+    border-radius: 5px;
+}
+
+/* On mouse-over, add a grey background color */
+.label:hover input ~ .checkmark {
+    background-color: #175cb7;
+}
+
+/* When the checkbox is checked, add a blue background */
+.label input:checked ~ .checkmark {
+    background-color: #1C5EB7;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the checkmark when checked */
+.label input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the checkmark/indicator */
+.label .checkmark:after {
+    left: 7px;
+    top: 4px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+.item-row label{
+    color:#000;
+}
+.item-row p{
+    margin: 10px;
+}
+.card-header{
+    background: #f0f0f0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    margin:auto;
+}
+.accordion .card{
+    margin: 10px auto;
+}
+.card-header a{
+    font-size: 15px;
+}
+.accordion .form-container{
+    margin: 0;
+}
+.text-danger{
+    color: #FFC107 !important;
+    margin: 10px;
+    font-weight: bold;
+    font-size: 13px;
+    min-width: 150px;
+
+}
+.swal2-popup{
+    padding: 40px !important;
+}
+.roles [type="radio"]:checked + label, [type="radio"]:not(:checked) + label{
+    margin:10px
+}
+.legend-label{
+    margin: 10px
+}
+.available{
+    width: 20px;
+    background: #fff;
+    height: 20px;
+    float: left;
+}
+.unavailable{
+    width:20px;
+    background: #b8b8b8;
+    height:20px;
+    float: left;
+    
+}
+.max{
+    width:20px;
+    background: #737272;
+    height:20px;
+    float: left;
+    
+}
+.legend-label label{
+    display: inline;
+    margin: 10px;
+    
+}
+.glyphicon-eye-open{
+    color:#165db7;
+    font-size: 13px;
+}
+.swal2-popup .swal2-title{
+    font-size: 15px !important; 
+}
+.form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
+    background-color: #fff !important;
+    opacity: 1;
+}
+  
+.ng-touched.ng-invalid:not(form)  {
+    border-bottom: 2px solid #a94442; /* red */
+  }
+td.manage-icon .fa-edit{
+    font-size: 20px;
+    color: #ffffff;
+    margin: auto 10px;
+}
+td label.label{
+    margin:auto 15px;
+    padding: 4px;
+}
+.form-container .page-header{
+    text-align: center;
+}
+legend{
+    margin-bottom: 0;
+}
+.btn-outline-secondary .active{
+    color: #ffeb3b;
+}
+.investor-home-header{
+    margin: auto 5px;
+}
+/*.calender{*/
+    /*width: 500px;*/
+/*}*/
+
+.tooltip.show {
+    opacity: 0.9 !important;
+}
+
+.white-font-icon {
+    color: white;
+    line-height: 54px;
+    font-size: 1.5em;
+}
+#terms .modal-dialog {
+    width: 900px !important;
+    margin: 30px auto;
+}

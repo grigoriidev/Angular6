@@ -1,0 +1,528 @@
+<div class="container">
+        <app-header></app-header>
+    </div>
+<div class="wrapper">
+    <div class="container">
+       <div class="page-wraper">
+           <div class="row">
+               <div class="col-md-12">
+                   <div class="page-header text-left">
+                       <h3>Create New Invitation</h3>
+                   </div>
+                   <div class="">
+                       <div class="row">
+                           <div class="col-sm-12">
+                               <!--<div class="form-group text-center">
+                                   <h4>Account Information</h4>
+                               </div>-->
+
+                               <div class="form-group text-center roles">
+                                   <!-- <ul class="role-type">
+                                       <li *ngFor="let role of Roles ; let i=index" >
+                                           <input type="radio"  name="radio-group" [(ngModel)]="invitation.role" name="role" (change)="onTypeSelection(role.name)" [value]="role.id" id="role_{{i}}" [checked]="role.id === '1'">
+                                           <label for="role_{{i}}">{{role.name}}</label>
+                                       </li>
+
+                                   </ul> -->
+                                   <ng-container *ngIf="invitor_role_id == 5">
+                                       <input type="radio" name="radio-group"  (change)="onTypeSelection('Blue Angel', 1)" value="1" id="role_1" checked />
+                                       <label for="role_1">Blue Angel</label>
+                                       <input type="radio" name="radio-group" (change)="onTypeSelection('Investor', 2)" value="2" id="role_2" />
+                                       <label for="role_2">Investor</label>
+                                       <input type="radio" name="radio-group" (change)="onTypeSelection('Federal Level Campaign/Candidate', 3)" value="3" id="role_3" />
+                                       <label for="role_3">Federal Level Campaign/Candidate</label>
+                                       <input type="radio" name="radio-group"  (change)="onTypeSelection('State Level Campaign/Candidate', 4)" value="4" id="role_4" />
+                                       <label for="role_4">State Level Campaign/Candidate</label>
+                                       <input type="radio" name="radio-group"  (change)="onTypeSelection('Volunteers', 7)" value="7" id="role_5" />
+                                       <label for="role_5">Volunteer</label>
+                                   </ng-container>
+                                   <ng-container *ngIf="invitor_role_id != 5">
+                                       <input type="radio" name="radio-group"  (change)="onTypeSelection('Manager', 8)" value="8" id="role_8" checked />
+                                       <label for="role_8">Manager</label>
+                                       <input type="radio" name="radio-group" (change)="onTypeSelection('Staff', 9)" value="9" id="role_9" />
+                                       <label for="role_9">Staff</label>
+                                   </ng-container>
+                               </div>
+                               <div class="text-center" *ngIf="showInviteForm2 && placeHolder === 'State Level Campaign/Candidate'">
+                                   <label class="label" style="max-width: 100px">Incumbent
+                                       <input type="checkbox" class="styled-checkbox" value="true" [(ngModel)]="invitation.incumbent" name="incumbent">
+                                       <span class="checkmark"></span>
+                                   </label>
+                               </div>
+                               <form #inviteForm1="ngForm" [hidden]="!showInviteForm1">
+
+                                   <div class="form-container">
+                                       <div class="form-group row">
+                                            <div class="col-sm-3">
+                                                <label>First Name *</label>
+                                                <input class="form-control" type="text" placeholder="First Name" [(ngModel)]="invitation.first_name" name="firstName" #firstName="ngModel"
+                                                (keydown)="stringsOnly($event)"    required>
+                                                <div [hidden]="firstName.valid || firstName.pristine" class="text-danger">
+                                                    First Name is required
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <label>Last Name *</label>
+                                                <input class="form-control" type="text" placeholder="Last Name" [(ngModel)]="invitation.last_name" name="lastName" #lastName="ngModel"
+                                                (keydown)="stringsOnly($event)"   required>
+                                                <div [hidden]="lastName.valid || lastName.pristine" class="text-danger">
+                                                    Last Name is required
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-3" *ngIf="showOccupation">
+                                                <label>Occupation</label>
+                                                <input class="form-control" type="text" placeholder="Occupation" [(ngModel)]="invitation.occupation" name="occupation">
+                                            </div>
+                                            <div class="col-sm-3" *ngIf="showOccupation">
+                                                <label>Employer</label>
+                                                <input class="form-control" type="text" placeholder="Employer" [(ngModel)]="invitation.employer" name="employer">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                           <div class="col-sm-6">
+                                               <label>Email Where Invitation Will Be Sent *</label>
+                                               <input class="form-control" type="email" placeholder="Email Where Invitation Will Be Sent *" [(ngModel)]="invitation.email"
+                                                      name="useremail" #useremail="ngModel" maxlength="50" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required email>
+                                               <div *ngIf="useremail.invalid && (useremail.dirty || useremail.touched)" class="text-danger">
+                                                   <div *ngIf="useremail.errors.required">
+                                                       Email is required.
+                                                   </div>
+                                                   <div *ngIf="useremail.errors.email">
+                                                       Enter a valid email address.
+                                                   </div>
+                                                   <div *ngIf="useremail.errors.maxlength">
+                                                       Email should not exceed 50 characters.
+                                                   </div>
+                                               </div>
+                                           </div>
+                                           <div class="col-sm-6">
+                                                <div class="col-sm-11">
+                                                    <label>Cell Phone *</label>
+                                                     <input [textMask]="{mask: mask}" type="text" [(ngModel)]="this.invitation.office_phone" placeholder="Cell Phone (__) __-____ *" name="office_phone" class="form-control"
+                                                       #phone="ngModel" minlength="14" (input)="passwordValidation()">
+                                                </div>
+                                                <div class="col-sm-1" style="margin-top: 28px">
+                                                     <i container="body" ngbTooltip="Please enter your cell phone as you will get important alert at times"
+                                                        class="fa-3x white-font-icon fa fa-info-circle"></i>
+                                                </div>
+                                                 <div class="text-danger" *ngIf="office_phone_error">
+                                                   Phone number is incomplete
+                                                 </div>
+                                            </div>
+                                       </div>
+                                   </div>
+                                   <div class="row">
+                                       <div class="col-md-6">
+                                           <!-- <button class="btn custom-btn" type="button" >Delete All</button> -->
+                                       </div>
+                                       <div class="col-md-6">
+
+                                           <div class="text-right">
+                                               <button class="btn custom-btn" type="button" (click)="locationSer.back()">Cancel</button>
+                                               <button class="btn custom-btn" [disabled]="!inviteForm1.form.valid" (click)="sendInvitation()">Send Invitation</button>
+
+                                           </div>
+                                       </div>
+                                   </div>
+
+                               </form>
+                               <div class="" [hidden]="!showInviteForm2">
+                                   <form #inviteForm2="ngForm" autocomplete="on" (ngSubmit)="sendInvitation()">
+                                       <div class="form-container">
+                                           <div class="form-group row">
+                                               <div class="col-sm-6">
+                                                   <div *ngIf="placeHolder === 'State Level Campaign/Candidate'">
+                                                       <label>Account Fullname </label>
+                                                       <input class="form-control" type="text" placeholder="Account ( {{placeHolder}} ) Fullname *" [(ngModel)]="invitation.name"
+                                                              name="name" required>
+                                                   </div>
+                                                   <div *ngIf="placeHolder === 'Federal Level Campaign/Candidate'">
+                                                       <label>Legally Correct Campaign Name *</label>
+                                                       <input class="form-control" type="text" placeholder="Legally Correct Campaign Name *" [(ngModel)]="invitation.name" name="name"
+                                                              required>
+                                                   </div>
+
+                                               </div>
+                                               <!-- <div class="col-sm-6">
+                                                    <label>Email Where Invitation will be sent *</label>
+                                                    <input class="form-control" type="email" placeholder="Email Where Invitation will be sent *" [(ngModel)]="invitation.email"
+                                                           name="useremail" #useremail="ngModel" maxlength="50" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required email>
+                                                    <div *ngIf="useremail.invalid && (useremail.dirty || useremail.touched)" class="text-danger">
+                                                        <div *ngIf="useremail.errors.required">
+                                                            Email is required.
+                                                        </div>
+                                                        <div *ngIf="useremail.errors.email">
+                                                            Enter a valid email address.
+                                                        </div>
+                                                        <div *ngIf="useremail.errors.maxlength">
+                                                            Email should not exceed 50 characters.
+                                                        </div>
+                                                    </div>
+                                                </div> -->
+                                           </div>
+                                           <div class="form-group row">
+                                               <div class="col-md-12">
+                                                   <h4 class="form-title">Office Candidate Seeks</h4>
+                                               </div>
+                                               <div class="col-sm-3">
+                                                   <!-- <input class="form-control" type="text"  placeholder="Office Sought"
+                                                          [(ngModel)]="invitation.office_sought" name="office_sought"> -->
+                                                   <div *ngIf="placeHolder === 'State Level Campaign/Candidate'">
+                                                       <label>Select Office *</label>
+                                                       <select class="form-control" id="office_sought" [(ngModel)]="invitation.office_sought" name="office_sought" required>
+                                                           <option value="" selected disabled>Select Office *</option>
+                                                           <option value="S">Upper House</option>
+                                                           <option value="R">Lower House</option>
+                                                       </select>
+                                                   </div>
+                                                   <div *ngIf="placeHolder === 'Federal Level Campaign/Candidate'">
+                                                       <label>Select Office *</label>
+                                                       <select class="form-control" id="seat" [(ngModel)]="invitation.office_sought" name="seat" required>
+                                                           <option value="" selected disabled>Select Office *</option>
+                                                           <option value="R">Congressional Seat</option>
+                                                           <option value="S">Senate Seat</option>
+                                                       </select>
+                                                   </div>
+                                               </div>
+                                               <div class="col-sm-3">
+                                                   <div *ngIf="placeHolder === 'State Level Campaign/Candidate'">
+                                                       <label>State Leg. District # *</label>
+                                                       <input #distState="ngModel" class="form-control" type="text" placeholder="State Leg. District # *" [(ngModel)]="invitation.office_leg_district"
+                                                              name="office_leg_district" pattern="^([1-9][0-9]{0,2}|1000)$" required>
+                                                       <p class="text-danger text-left"
+                                                          *ngIf="distState?.errors?.pattern && (distState.dirty || distState.touched)">Value should be in 1 - 1000</p>
+                                                   </div>
+                                               </div>
+
+                                               <div class="col-sm-3">
+                                                   <!-- <ng-container *ngIf="invitation.office_sought == ''">
+                                                       <label>Select District *</label>
+                                                       <input class="form-control" type="text" placeholder="Select District *" (keypress)="numberOnly($event)" [(ngModel)]="invitation.office_district" name="officeDistrict" min="1" max="1000" maxlength="4">
+                                                       <p class="text-danger text-left" *ngIf="invitation.office_district > 1000">Maximum allowed value is 1000</p>
+                                                       <p class="text-danger text-left" *ngIf="invitation.office_district < 1">Minmun allowed value is 1</p>
+                                                   </ng-container> -->
+                                                   <ng-container *ngIf="placeHolder === 'Federal Level Campaign/Candidate' && invitation.office_sought != 'S'">
+                                                       <label>Congressional District *</label>
+                                                       <input class="form-control" #districtNum="ngModel" type="text" placeholder="Congressional District *" [(ngModel)]="invitation.office_district"
+                                                        name="officeDistrict" pattern="^([1-9][0-9]{0,2}|1000)$" required>
+                                                       <p class="text-danger text-left"
+                                                          *ngIf="districtNum?.errors?.pattern && (districtNum.dirty || districtNum.touched)">Value should be in 1 - 1000</p>
+                                                   </ng-container>
+                                                   <div [hidden]="placeHolder === 'Federal Level Campaign/Candidate'">
+                                                       <label>Congressional District *</label>
+                                                       <input class="form-control" #districtN="ngModel"  type="text" placeholder="Congressional District " [(ngModel)]="invitation.office_district"
+                                                       name="officeDistrict"
+                                                       pattern="^([1-9][0-9]{0,2}|1000)$" required>
+                                                       <p class="text-danger text-left"
+                                                          *ngIf="districtN?.errors?.pattern && (districtN.dirty || districtN.touched)">Value should be in 1 - 1000</p>
+                                                   </div>
+                                               </div>
+                                               <div class="col-sm-3">
+                                                   <label>State</label>
+                                                   <select class="form-control" id="officeState" [(ngModel)]="invitation.office_state" name="officeState" required>
+                                                       <option value="" selected disabled>Select State *</option>
+                                                       <option value="AL">Alabama</option>
+                                                       <option value="AK">Alaska</option>
+                                                       <option value="AS">American Samoa</option>
+                                                       <option value="AZ">Arizona</option>
+                                                       <option value="AR">Arkansas</option>
+                                                       <option value="CA">California</option>
+                                                       <option value="CO">Colorado</option>
+                                                       <option value="CT">Connecticut</option>
+                                                       <option value="DE">Delaware</option>
+                                                       <option value="DC">District of Columbia</option>
+                                                       <option value="FL">Florida</option>
+                                                       <option value="GA">Georgia</option>
+                                                       <option value="GU">Guam</option>
+                                                       <option value="HI">Hawaii</option>
+                                                       <option value="ID">Idaho</option>
+                                                       <option value="IL">Illinois</option>
+                                                       <option value="IN">Indiana</option>
+                                                       <option value="IA">Iowa</option>
+                                                       <option value="KS">Kansas</option>
+                                                       <option value="KY">Kentucky</option>
+                                                       <option value="LA">Louisiana</option>
+                                                       <option value="ME">Maine</option>
+                                                       <option value="MD">Maryland</option>
+                                                       <option value="MH">Marshall Islands</option>
+                                                       <option value="MA">Massachusetts</option>
+                                                       <option value="MI">Michigan</option>
+                                                       <option value="FM">Micronesia</option>
+                                                       <option value="MN">Minnesota</option>
+                                                       <option value="MS">Mississippi</option>
+                                                       <option value="MO">Missouri</option>
+                                                       <option value="MT">Montana</option>
+                                                       <option value="NE">Nebraska</option>
+                                                       <option value="NV">Nevada</option>
+                                                       <option value="NH">New Hampshire</option>
+                                                       <option value="NJ">New Jersey</option>
+                                                       <option value="NM">New Mexico</option>
+                                                       <option value="NY">New York</option>
+                                                       <option value="NC">North Carolina</option>
+                                                       <option value="ND">North Dakota</option>
+                                                       <option value="MP">Northern Marianas</option>
+                                                       <option value="OH">Ohio</option>
+                                                       <option value="OK">Oklahoma</option>
+                                                       <option value="OR">Oregon</option>
+                                                       <option value="PW">Palau</option>
+                                                       <option value="PA">Pennsylvania</option>
+                                                       <option value="RI">Rhode Island</option>
+                                                       <option value="SC">South Carolina</option>
+                                                       <option value="SD">South Dakota</option>
+                                                       <option value="TN">Tennessee</option>
+                                                       <option value="TX">Texas</option>
+                                                       <option value="UT">Utah</option>
+                                                       <option value="VT">Vermont</option>
+                                                       <option value="VA">Virginia</option>
+                                                       <option value="VI">Virgin Islands</option>
+                                                       <option value="WA">Washington</option>
+                                                       <option value="WV">West Virginia</option>
+                                                       <option value="WI">Wisconsin</option>
+                                                       <option value="WY">Wyoming</option>
+                                                   </select>
+                                               </div>
+                                           </div>
+                                           <div class="form-group row">
+                                               <div class="col-sm-12">
+                                                   <h4 class="form-title">Candidate Name & Address:</h4>
+                                               </div>
+                                           </div>
+                                           <div class="form-group row">
+                                               <div class="col-sm-1">
+                                                   <label>Prefix</label>
+                                                   <input class="form-control" type="text" placeholder="Prefix" [(ngModel)]="invitation.prefix" name="prefix" maxlength="5">
+                                               </div>
+                                               <div class="col-sm-3">
+                                                   <label>First *</label>
+                                                   <input class="form-control" type="text" placeholder="First *" [(ngModel)]="invitation.first_name" name="firstName" #firstName="ngModel"
+                                                          required>
+                                                   <div [hidden]="firstName.valid || firstName.pristine" class="text-danger">
+                                                       First Name is required
+                                                   </div>
+                                               </div>
+                                               <div class="col-sm-2">
+                                                   <label>Middle</label>
+                                                   <input class="form-control" type="text" placeholder="Middle" [(ngModel)]="invitation.middle_name" name="middle_name">
+                                               </div>
+                                               <div class="col-sm-2">
+                                                   <label>Nick-Name</label>
+                                                   <input class="form-control" type="text" placeholder="Nick-Name" [(ngModel)]="invitation.nick_name" name="nick_name">
+                                               </div>
+                                               <div class="col-sm-3">
+                                                   <label>Last *</label>
+                                                   <input class="form-control" type="text" placeholder="Last *" [(ngModel)]="invitation.last_name" name="lastName" #lastName="ngModel"
+                                                          required>
+                                                   <div [hidden]="lastName.valid || lastName.pristine" class="text-danger">
+                                                       Last Name is required
+                                                   </div>
+                                               </div>
+                                               <div class="col-sm-1">
+                                                   <label>Suffix</label>
+                                                   <input class="form-control" type="text" placeholder="Suffix" [(ngModel)]="invitation.suffix" name="suffix" maxlength="5">
+                                               </div>
+                                           </div>
+                                           <div class="form-group row">
+                                               <div class="col-sm-4">
+                                                   <label>Street Address *</label>
+                                                   <input class="form-control" type="text" placeholder="Street Address *" [(ngModel)]="invitation.office_street" name="officeStreet"
+                                                          #officeStreet="ngModel" required>
+                                                   <div [hidden]="officeStreet.valid || officeStreet.pristine" class="text-danger">
+                                                       Street Address is required
+                                                   </div>
+                                               </div>
+                                               <div class="col-sm-2">
+                                                   <label>Address Line2</label>
+                                                   <input class="form-control" type="text" placeholder="Address Line2" [(ngModel)]="invitation.office_address" name="office_address2">
+                                               </div>
+                                               <div class="col-sm-2">
+                                                   <label>City *</label>
+                                                   <input class="form-control" type="text" placeholder="City *" [(ngModel)]="invitation.office_city" name="officeCity" #officeCity="ngModel"
+                                                          required>
+                                                   <div [hidden]="officeCity.valid || officeCity.pristine" class="text-danger">
+                                                       City is required
+                                                   </div>
+                                               </div>
+                                               <div class="col-sm-2">
+                                                   <label>State</label>
+                                                   <select class="form-control" id="state" [(ngModel)]="invitation.office_state1" name="officeState1" #officeState1="ngModel"
+                                                           required>
+                                                       <option value="" selected disabled>Select State *</option>
+                                                       <option value="AL">Alabama</option>
+                                                       <option value="AK">Alaska</option>
+                                                       <option value="AS">American Samoa</option>
+                                                       <option value="AZ">Arizona</option>
+                                                       <option value="AR">Arkansas</option>
+                                                       <option value="CA">California</option>
+                                                       <option value="CO">Colorado</option>
+                                                       <option value="CT">Connecticut</option>
+                                                       <option value="DE">Delaware</option>
+                                                       <option value="DC">District of Columbia</option>
+                                                       <option value="FL">Florida</option>
+                                                       <option value="GA">Georgia</option>
+                                                       <option value="GU">Guam</option>
+                                                       <option value="HI">Hawaii</option>
+                                                       <option value="ID">Idaho</option>
+                                                       <option value="IL">Illinois</option>
+                                                       <option value="IN">Indiana</option>
+                                                       <option value="IA">Iowa</option>
+                                                       <option value="KS">Kansas</option>
+                                                       <option value="KY">Kentucky</option>
+                                                       <option value="LA">Louisiana</option>
+                                                       <option value="ME">Maine</option>
+                                                       <option value="MD">Maryland</option>
+                                                       <option value="MH">Marshall Islands</option>
+                                                       <option value="MA">Massachusetts</option>
+                                                       <option value="MI">Michigan</option>
+                                                       <option value="FM">Micronesia</option>
+                                                       <option value="MN">Minnesota</option>
+                                                       <option value="MS">Mississippi</option>
+                                                       <option value="MO">Missouri</option>
+                                                       <option value="MT">Montana</option>
+                                                       <option value="NE">Nebraska</option>
+                                                       <option value="NV">Nevada</option>
+                                                       <option value="NH">New Hampshire</option>
+                                                       <option value="NJ">New Jersey</option>
+                                                       <option value="NM">New Mexico</option>
+                                                       <option value="NY">New York</option>
+                                                       <option value="NC">North Carolina</option>
+                                                       <option value="ND">North Dakota</option>
+                                                       <option value="MP">Northern Marianas</option>
+                                                       <option value="OH">Ohio</option>
+                                                       <option value="OK">Oklahoma</option>
+                                                       <option value="OR">Oregon</option>
+                                                       <option value="PW">Palau</option>
+                                                       <option value="PA">Pennsylvania</option>
+                                                       <option value="RI">Rhode Island</option>
+                                                       <option value="SC">South Carolina</option>
+                                                       <option value="SD">South Dakota</option>
+                                                       <option value="TN">Tennessee</option>
+                                                       <option value="TX">Texas</option>
+                                                       <option value="UT">Utah</option>
+                                                       <option value="VT">Vermont</option>
+                                                       <option value="VA">Virginia</option>
+                                                       <option value="VI">Virgin Islands</option>
+                                                       <option value="WA">Washington</option>
+                                                       <option value="WV">West Virginia</option>
+                                                       <option value="WI">Wisconsin</option>
+                                                       <option value="WY">Wyoming</option>
+                                                   </select>
+                                                   <div [hidden]="officeState1.valid || officeState1.pristine" class="text-danger">
+                                                       State is required
+                                                   </div>
+                                               </div>
+                                               <div class="col-sm-2">
+                                                   <label>Postal Code *</label>
+                                                   <input class="form-control" type="text" placeholder="Postal Code *" [(ngModel)]="invitation.office_postal_code" name="officePostalCode"
+                                                          #officePostalCode="ngModel" (keypress)="numberOnly($event)" maxlength="5" minlength="5" required>
+                                                   <div *ngIf="officePostalCode.invalid && (officePostalCode.dirty || officePostalCode.touched)"
+                                                        class="text-danger">
+                                                       <div *ngIf="officePostalCode.errors.required">
+                                                           Postal Code is required.
+                                                       </div>
+                                                       <div *ngIf="officePostalCode.errors.minlength">
+                                                           Postal Code should be 5 characters.
+                                                       </div>
+                                                   </div>
+                                               </div>
+                                           </div>
+                                           <div class="form-group row">
+
+                                               <div class="col-sm-6">
+                                                   <label>Email Address *</label>
+                                                   <input class="form-control" type="email" placeholder="Email Address *" [(ngModel)]="invitation.office_email" name="officeEmail"
+                                                          #officeEmail="ngModel" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required >
+                                               </div>
+                                               <div class="col-sm-6">
+                                                   <div class="col-sm-11">
+                                                       <label>Cell Phone *</label>
+                                                        <input [textMask]="{mask: mask}" type="text" [(ngModel)]="this.invitation.office_phone" placeholder="Cell Phone (__) __-____ *" name="office_phone" class="form-control"
+                                                          #phone="ngModel" minlength="14" (input)="passwordValidation()" required>
+                                                   </div>
+                                                   <div class="col-sm-1" style="margin-top: 28px">
+                                                        <i container="body" ngbTooltip="Please enter your cell phone as you will get important alert at times"
+                                                           class="fa-3x white-font-icon fa fa-info-circle"></i>
+                                                   </div>
+                                                    <div class="text-danger" *ngIf="office_phone_error">
+                                                      Phone number is incomplete
+                                                    </div>
+                                               </div>
+                                           </div>
+                                           <div class="form-group row">
+                                               <div class="col-sm-12">
+                                                   <h4 class="form-title">Campaign Manager Info:</h4>
+                                               </div>
+                                           </div>
+                                           <div class="form-group row">
+                                               <div class="col-sm-3">
+                                                   <label>First Name *</label>
+                                                   <input class="form-control" type="text" placeholder="First Name *" [(ngModel)]="invitation.campaign_manager_first_name" 
+                                                   name="campaignManagerFirstName" #campaignManagerFirstName="ngModel" required>
+                                                   <div [hidden]="campaignManagerFirstName.valid || campaignManagerFirstName.pristine" class="text-danger">
+                                                       First Name is required
+                                                   </div>
+                                               </div>
+                                               <div class="col-sm-3">
+                                                   <label>Last Name *</label>
+                                                   <input class="form-control" type="text" placeholder="Last Name *" [(ngModel)]="invitation.campaign_manager_last_name" 
+                                                   name="campaignManagerLastName" #campaignManagerLastName="ngModel" required>
+                                                   <div [hidden]="campaignManagerLastName.valid || campaignManagerLastName.pristine" class="text-danger">
+                                                       Last Name is required
+                                                   </div>
+                                               </div>
+
+                                               <div class="col-sm-6">
+                                                   <label>Email Address *</label>
+                                                   <input class="form-control" type="email" placeholder="Email Address *" [(ngModel)]="invitation.campaign_manager_email" name="campaignManagerEmail"
+                                                          #campaignManagerEmail="ngModel" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required>
+                                               </div>
+                                           </div>
+                                           <div class="form-group row">
+                                               <div class="col-sm-6">
+                                                   <label>Cell Phone</label>
+                                                   <input class="form-control" type="tel" [textMask]="{mask: mask}"  [(ngModel)]="invitation.campaign_manager_cell_phone" name="campaignManagerCellPhone"
+                                                          #campaignManagerCellPhone="ngModel" placeholder="Cell Phone(__) __-____" minlength="14" (input)="passwordValidation()">
+
+
+                                                   <div *ngIf="campaign_manager_cell_phone_error" class="text-danger">
+                                                       Phone number is incomplete
+                                                   </div>
+                                                   <!--<div *ngIf="campaignManagerCellPhone.errors && (campaignManagerCellPhone.dirty || campaignManagerCellPhone.touched)" class="text-danger">
+                                                       <div [hidden]="!campaignManagerCellPhone.errors.required">
+                                                           Phone is required!
+                                                       </div>
+
+                                                       <div [hidden]="!campaignManagerCellPhone.errors.minlength">
+                                                           Phone number is incomplete
+                                                       </div>
+                                                   </div>-->
+                                               </div>
+                                           </div>
+
+                                       </div>
+                                       <div class="row">
+                                           <div class="col-md-6">
+                                               <!-- <button class="btn custom-btn" type="button" >Delete All</button> -->
+                                           </div>
+                                           <div class="col-md-6">
+                                               <div class="text-right">
+                                                   <button class="btnManage Invitations custom-btn" type="button" (click)="locationSer.back()">Cancel</button>
+                                                   <button class="btn custom-btn" [disabled]="!inviteForm2.form.valid || office_phone_error || campaign_manager_cell_phone_error" type="submit">Send Invitation</button>
+                                                   <!-- <div [hidden]="inviteForm2.valid || inviteForm2.pristine" class="text-danger">
+                                                       Please fill all the required fields.
+                                                   </div> -->
+                                                   <p class="text-danger">{{validation}}</p>
+                                               </div>
+                                           </div>
+                                       </div>
+                                   </form>
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+           </div>
+       </div>
+
+    </div>
+</div>
+<app-footer></app-footer>

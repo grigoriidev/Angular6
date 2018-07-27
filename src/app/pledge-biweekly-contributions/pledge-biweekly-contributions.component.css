@@ -1,0 +1,7 @@
+[type="radio"]:checked, [type="radio"]:not(:checked) {
+    position: relative !important;
+    left:0px !important;
+}
+.radio {
+    margin-left:100px;
+}

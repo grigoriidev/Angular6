@@ -1,0 +1,1830 @@
+<div class="wrapper">
+
+    <div class="container">
+        <!--<div class="row">
+            <div class="col-md-12">
+                <img src="../../assets/images/logo.png" width="100px">
+            </div>
+        </div>-->
+        <div class="page-wraper">
+            <div class="page-header"><h2 class="text-center">Federal Campaign Registration Form</h2></div>
+
+        </div>
+        <ngb-tabset #multiForm="ngbTabset" type="pills" [justify]="currentJustify">
+            <ngb-tab id="step1">
+                <ng-template ngbTabTitle><i class="fa fa-info"></i>Federal Campaign Information</ng-template>
+                <ng-template ngbTabContent>
+                    <form  #signupFrm1="ngForm" (ngSubmit)="multiForm.select('step2');" ngNativeValidate>
+                        <div class="frm-wraper">
+                            <div class="page-wraper">
+                                <div class="text-center">
+                                    <input type="radio" id="test1" value="federal" [(ngModel)]="model1.candiate_type"
+                                           name="candiateType" *ngIf="model1.candiate_type == 'federal'">
+                                    <label for="test1" *ngIf="model1.candiate_type == 'federal'">Federal Level Candidate</label>
+                                    <input type="radio" id="test2" value="state" [(ngModel)]="model1.candiate_type"
+                                           name="candiateType" *ngIf="model1.candiate_type == 'state'">
+                                    <label for="test2" *ngIf="model1.candiate_type == 'state'">State Level Candidate</label>
+                                </div>
+
+
+                                <div class="form-group form-one">
+                                    <div class="row">
+                                        <div class="col-sm-4 custom-select">
+                                            <label>Office Candidate Seeks*</label>
+                                            <!-- <select class="form-control" id="officeSeeks-fedaral"
+                                                    [(ngModel)]="model1.office_sought" name="officeSeek" required>
+                                                <option value="" selected disabled>Select Office</option>
+                                                <option value="congressional">CONGRESSIONAL SEAT</option>
+                                                <option value="senate">SENATE SEAT</option>
+                                            </select> -->
+                                            <select class="form-control" id="office_sought" [(ngModel)]="model1.office_sought"
+                                            name="office_sought" *ngIf="model1.candiate_type == 'state'" required>
+                                                <option value="" selected disabled>Select Office *</option>
+                                                <option value="S">Upper House</option>
+                                                <option value="R">Lower House</option>
+                                            </select>
+                                            <select class="form-control" id="seat" [(ngModel)]="model1.office_sought"
+                                            name="seat" *ngIf="model1.candiate_type == 'federal'" required>
+                                                <option value="" selected disabled>Select Office *</option>
+                                                <option value="R">Congressional Seat</option>
+                                                <option value="S">Senate Seat</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-sm-4 custom-select">
+                                            <label for="officeState">State *</label>
+                                            <select class="form-control" id="officeState"
+                                                    [(ngModel)]="model1.office_state" name="officeState" required>
+                                                    <option value="" disabled>Select State</option>
+                                                    <option value="AL">Alabama</option>
+                                                     <option value="AK">Alaska</option>
+                                                     <option value="AS">American Samoa</option>
+                                                     <option value="AZ">Arizona</option>
+                                                     <option value="AR">Arkansas</option>
+                                                     <option value="CA">California</option>
+                                                     <option value="CO">Colorado</option>
+                                                     <option value="CT">Connecticut</option>
+                                                     <option value="DE">Delaware</option>
+                                                     <option value="DC">District of Columbia</option>
+                                                     <option value="FL">Florida</option>
+                                                     <option value="GA">Georgia</option>
+                                                     <option value="GU">Guam</option>
+                                                     <option value="HI">Hawaii</option>
+                                                     <option value="ID">Idaho</option>
+                                                     <option value="IL">Illinois</option>
+                                                     <option value="IN">Indiana</option>
+                                                     <option value="IA">Iowa</option>
+                                                     <option value="KS">Kansas</option>
+                                                     <option value="KY">Kentucky</option>
+                                                     <option value="LA">Louisiana</option>
+                                                     <option value="ME">Maine</option>
+                                                     <option value="MD">Maryland</option>
+                                                     <option value="MH">Marshall Islands</option>
+                                                     <option value="MA">Massachusetts</option>
+                                                     <option value="MI">Michigan</option>
+                                                     <option value="FM">Micronesia</option>
+                                                     <option value="MN">Minnesota</option>
+                                                     <option value="MS">Mississippi</option>
+                                                     <option value="MO">Missouri</option>
+                                                     <option value="MT">Montana</option>
+                                                     <option value="NE">Nebraska</option>
+                                                     <option value="NV">Nevada</option>
+                                                     <option value="NH">New Hampshire</option>
+                                                     <option value="NJ">New Jersey</option>
+                                                     <option value="NM">New Mexico</option>
+                                                     <option value="NY">New York</option>
+                                                     <option value="NC">North Carolina</option>
+                                                     <option value="ND">North Dakota</option>
+                                                     <option value="MP">Northern Marianas</option>
+                                                     <option value="OH">Ohio</option>
+                                                     <option value="OK">Oklahoma</option>
+                                                     <option value="OR">Oregon</option>
+                                                     <option value="PW">Palau</option>
+                                                     <option value="PA">Pennsylvania</option>
+                                                     <option value="RI">Rhode Island</option>
+                                                     <option value="SC">South Carolina</option>
+                                                     <option value="SD">South Dakota</option>
+                                                     <option value="TN">Tennessee</option>
+                                                     <option value="TX">Texas</option>
+                                                     <option value="UT">Utah</option>
+                                                     <option value="VT">Vermont</option>
+                                                     <option value="VA">Virginia</option>
+                                                     <option value="VI">Virgin Islands</option>
+                                                     <option value="WA">Washington</option>
+                                                     <option value="WV">West Virginia</option>
+                                                     <option value="WI">Wisconsin</option>
+                                                     <option value="WY">Wyoming</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <label for="officeDistrict">District (if applicable)</label>
+                                            <input class="form-control" type="text" min="1" max="1000" maxlength="4" placeholder="District Name"
+                                                   [(ngModel)]="model1.office_district" name="officeDistrict" (keypress)="numberOnly($event)"
+                                                   id="officeDistrict" [disabled]="model1.office_sought === 'S' && model1.candiate_type == 'federal'">
+                                            <p class="text-danger text-left" *ngIf="model1.office_district > 1000">Maximum allowed value is 1000</p>
+                                            <p class="text-danger text-left" *ngIf="model1.office_district < 1">Minimum allowed value is 1</p>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="page-header"><h2 class="text-color">Contact Information</h2></div>
+                            <div class="form-container">
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <h4 class="form-title">Legal Campaign Name</h4>
+                                        <input class="form-control" type="text"  placeholder="Legally correct campaign name *"
+                                        [(ngModel)]="model1.name"  name="name"  required>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-12">
+                                        <h4 class="form-title">Candidate Information:</h4>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-1">
+                                        <label>Prefix</label>
+                                        <input class="form-control" type="text" placeholder="Prefix"
+                                               maxlength="5"
+                                               [(ngModel)]="model1.prefix" name="prefix">
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <label>First *</label>
+                                        <input class="form-control" type="text" placeholder="First *"
+                                               [(ngModel)]="model1.first_name" name="firstName" #firstName="ngModel"
+                                               required>
+                                        <div [hidden]="firstName.valid || firstName.pristine" class="text-danger">
+                                            First Name is required
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <label>Middle</label>
+                                        <input class="form-control" type="text" placeholder="Middle"
+                                               [(ngModel)]="model1.middle_name" name="middle_name">
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <label>Nick Name</label>
+                                        <input class="form-control" type="text" placeholder="Nick-Name"
+                                               [(ngModel)]="model1.nick_name" name="nick_name">
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <label>Last *</label>
+                                        <input class="form-control" type="text" placeholder="Last *"
+                                               [(ngModel)]="model1.last_name" name="lastName" #lastName="ngModel"
+                                               required>
+                                        <div [hidden]="lastName.valid || lastName.pristine" class="text-danger">
+                                            Last Name is required
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-1">
+                                        <label>Suffix</label>
+                                        <input class="form-control" type="text" placeholder="Suffix"
+                                               maxlength="5"
+                                               [(ngModel)]="model1.suffix" name="suffix">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-12">
+                                        <h4 class="form-title">Mailing Address (for payments):</h4>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-4">
+                                        <label>Street Address *</label>
+                                        <input class="form-control" type="text" placeholder="Street Address *"
+                                               [(ngModel)]="model1.office_street" name="officeStreet"
+                                               #officeStreet="ngModel" required>
+                                        <div [hidden]="officeStreet.valid || officeStreet.pristine" class="text-danger">
+                                            Street Address is required
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <label>Address Line2</label>
+                                        <input class="form-control" type="text" placeholder="Address Line2"
+                                               [(ngModel)]="model1.office_address" name="office_address2">
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <label>City *</label>
+                                        <input class="form-control" type="text" placeholder="City *"
+                                               [(ngModel)]="model1.office_city" name="officeCity" #officeCity="ngModel"
+                                               required>
+                                        <div [hidden]="officeCity.valid || officeCity.pristine" class="text-danger">
+                                            City is required
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <label>State *</label>
+                                        <select class="form-control" id="state"
+                                                [(ngModel)]="model1.office_state1" name="officeState1"
+                                                #officeState1="ngModel" required>
+                                                <option value="">Select State *</option>
+                                                <option value="AL">Alabama</option>
+                                                 <option value="AK">Alaska</option>
+                                                 <option value="AS">American Samoa</option>
+                                                 <option value="AZ">Arizona</option>
+                                                 <option value="AR">Arkansas</option>
+                                                 <option value="CA">California</option>
+                                                 <option value="CO">Colorado</option>
+                                                 <option value="CT">Connecticut</option>
+                                                 <option value="DE">Delaware</option>
+                                                 <option value="DC">District of Columbia</option>
+                                                 <option value="FL">Florida</option>
+                                                 <option value="GA">Georgia</option>
+                                                 <option value="GU">Guam</option>
+                                                 <option value="HI">Hawaii</option>
+                                                 <option value="ID">Idaho</option>
+                                                 <option value="IL">Illinois</option>
+                                                 <option value="IN">Indiana</option>
+                                                 <option value="IA">Iowa</option>
+                                                 <option value="KS">Kansas</option>
+                                                 <option value="KY">Kentucky</option>
+                                                 <option value="LA">Louisiana</option>
+                                                 <option value="ME">Maine</option>
+                                                 <option value="MD">Maryland</option>
+                                                 <option value="MH">Marshall Islands</option>
+                                                 <option value="MA">Massachusetts</option>
+                                                 <option value="MI">Michigan</option>
+                                                 <option value="FM">Micronesia</option>
+                                                 <option value="MN">Minnesota</option>
+                                                 <option value="MS">Mississippi</option>
+                                                 <option value="MO">Missouri</option>
+                                                 <option value="MT">Montana</option>
+                                                 <option value="NE">Nebraska</option>
+                                                 <option value="NV">Nevada</option>
+                                                 <option value="NH">New Hampshire</option>
+                                                 <option value="NJ">New Jersey</option>
+                                                 <option value="NM">New Mexico</option>
+                                                 <option value="NY">New York</option>
+                                                 <option value="NC">North Carolina</option>
+                                                 <option value="ND">North Dakota</option>
+                                                 <option value="MP">Northern Marianas</option>
+                                                 <option value="OH">Ohio</option>
+                                                 <option value="OK">Oklahoma</option>
+                                                 <option value="OR">Oregon</option>
+                                                 <option value="PW">Palau</option>
+                                                 <option value="PA">Pennsylvania</option>
+                                                 <option value="RI">Rhode Island</option>
+                                                 <option value="SC">South Carolina</option>
+                                                 <option value="SD">South Dakota</option>
+                                                 <option value="TN">Tennessee</option>
+                                                 <option value="TX">Texas</option>
+                                                 <option value="UT">Utah</option>
+                                                 <option value="VT">Vermont</option>
+                                                 <option value="VA">Virginia</option>
+                                                 <option value="VI">Virgin Islands</option>
+                                                 <option value="WA">Washington</option>
+                                                 <option value="WV">West Virginia</option>
+                                                 <option value="WI">Wisconsin</option>
+                                                 <option value="WY">Wyoming</option>
+                                        </select>
+                                        <div [hidden]="officeState1.valid || officeState1.pristine" class="text-danger">
+                                            State is required
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <label>Postal Code *</label>
+                                        <input class="form-control" type="text" placeholder="Postal Code *"
+                                               [(ngModel)]="model1.office_postal_code" name="officePostalCode"
+                                               #officePostalCode="ngModel" minlength="5" maxlength="5" (keypress)="numberOnly($event)" required>
+                                        <!-- <div [hidden]="officePostalCode.valid || officePostalCode.pristine"
+                                             class="text-danger">
+                                            Postal Code is required
+                                        </div> -->
+                                        <div *ngIf="officePostalCode.invalid && (officePostalCode.dirty || officePostalCode.touched)"
+                                                class="text-danger">
+                                            <div *ngIf="officePostalCode.errors.required">
+                                                Postal Code is required.
+                                            </div>
+                                            <div *ngIf="officePostalCode.errors.minlength">
+                                                Postal Code should have at least 5 characters.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-6">
+                                        <label>Email Address *</label>
+                                        <input class="form-control" type="email" placeholder="Email Address *"
+                                               [(ngModel)]="model1.office_email" name="officeEmail"
+                                               #officeEmail="ngModel" disabled>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label>Cell Phone *</label>
+                                        <input class="form-control" type="tel" [textMask]="{mask: mask}"  [(ngModel)]="model1.office_phone" name="office_phone"
+                                               #office_phone="ngModel" placeholder="Cell Phone(__) __-____*" minlength="14" (input)="phoneValidation()"  required>
+
+                                        <div *ngIf="office_phone_error" class="text-danger">
+                                            Phone number is incomplete
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- <div class="form-group row">
+                                    <div class="col-sm-6">
+                                       <div class="input-group">
+                                            <input type="{{inputType}}" placeholder="Password *" [(ngModel)]="model1.password" name="password" #password="ngModel"
+                                                class="form-control"  pattern="(?=^.{6,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required>
+                                               <div class="input-group-btn">
+                                                    <button class="btn btn-default" type="button" (click)="changeType()">
+                                                      <i class="glyphicon glyphicon-eye-open"></i>
+                                                    </button>
+                                             </div>
+                                       </div>
+                                       <div *ngIf="password.errors && (password.dirty || password.touched)" class="text-danger">
+                                        <div [hidden]="!password.errors.required">
+                                              Password is required!
+                                         </div>
+                                           <div [hidden]="!password.errors.pattern">
+                                            Password must be at least 6 characters long.
+                                            And It must contain at least one number, one uppercase and lowercase letter or a special character.
+                                        </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="input-group">
+                                                <input class="form-control" type="{{inputType}}" placeholder="Confirm Password *"
+                                                [(ngModel)]="model1.password1" name="password1" #password1="ngModel"
+                                                (input)="pwdMatchValidator()" required>
+                                                <div class="input-group-btn">
+                                                        <button class="btn btn-default" type="button" (click)="changeType()">
+                                                          <i class="glyphicon glyphicon-eye-open"></i>
+                                                        </button>
+                                                 </div>
+                                        </div>
+
+                                        <div *ngIf="mismacth" class="text-danger">
+                                            Password Doesn't Match!
+                                         </div>
+                                    </div>
+                                </div> -->
+                                <div class="form-group row">
+                                    <div class="col-sm-12">
+                                        <h4 class="form-title">Campaign Manager Info:</h4>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-6">
+                                        <label>First Name *</label>
+                                        <input class="form-control" type="text" placeholder="Name *"
+                                               [(ngModel)]="model1.campaign_manager_name" name="campaignManagerName"
+                                               #campaignManagerName="ngModel" required>
+                                        <div [hidden]="campaignManagerName.valid || campaignManagerName.pristine"
+                                             class="text-danger">
+                                            Name is required
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label>Email Address *</label>
+                                        <input class="form-control" type="text" placeholder="Email Address *"
+                                               [(ngModel)]="model1.campaign_manager_email" name="campaignManagerEmail"
+                                               #campaignManagerEmail="ngModel"  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required>
+                                        <div [hidden]="campaignManagerEmail.valid || campaignManagerEmail.pristine"
+                                             class="text-danger">
+                                            Manager email is required
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-6">
+                                        <label>Cell Phone Number *</label>
+                                        <input class="form-control" type="tel" [textMask]="{mask: mask}"  [(ngModel)]="model1.campaign_manager_cell_phone" name="campaignManagerCellPhone"
+                                               #campaignManagerCellPhone="ngModel" placeholder="Cell Phone(__) __-____" minlength="14" (input)="phoneValidation()">
+                                        <div *ngIf="campaign_manager_cell_phone_error" class="text-danger">
+                                            Phone number is incomplete
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="text-right">
+                                <button type="submit" class="btn custom-btn" (click)="enableTab(2);" [disabled]="!signupFrm1.form.valid || mismacth || office_phone_error || campaign_manager_cell_phone_error">Save and Continue
+                                </button>
+                                <div [hidden]="signupFrm1.valid || signupFrm1.pristine" class="text-danger">
+                                    Please fill all the required fields.
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </ng-template>
+            </ngb-tab>
+            <ngb-tab id="step2" [disabled]="!showTab2">
+                <ng-template ngbTabTitle><i class="fa fa-list"></i>Campaign Budget Summary</ng-template>
+                <ng-template ngbTabContent>
+                    <form #signupFrm2="ngForm" (ngSubmit)="multiForm.select('step3');" autocomplete="on" ngNativeValidate>
+                        <div class="form-container">
+                            <div class="form-group row">
+                                <div class="col-sm-12">
+                                    <label>District Demographics</label>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-4">
+                                    <label>Population *</label>
+                                    <input class="form-control" type="text" placeholder="Population *"
+                                           [(ngModel)]="model1.demographics_population" maxlength="9" name="demographicsPopulation"
+                                           #demographicsPopulation="ngModel" (keypress)="numberOnly($event)" [textMask]="{mask: numberMask, guide: false, modelClean: true}"  required>
+                                </div>
+                                <div class="col-sm-4">
+                                    <label>Registered Voters *</label>
+                                    <input class="form-control" type="text" placeholder="Registered Voters *"
+                                           [(ngModel)]="model1.demographics_registered_voters"
+                                           name="demographicsRegisteredVoters"
+                                           #demographicsRegisteredVoters="ngModel" maxlength="9" (keypress)="numberOnly($event)" [textMask]="{mask: numberMask, guide: false, modelClean: true}" required>
+                                </div>
+                                <div class="col-sm-4">
+                                    <label>DPI (Democratic Performance Index 1-100) *</label>
+                                    <input class="form-control" type="number"
+                                           placeholder="DPI (Democratic Performance Index 1-100) *"
+                                           [(ngModel)]="model1.demographics_dbi" name="demographicsDbi"
+                                           #demographicsDbi="ngModel" maxlength="3" max="100" (blur)="numberOnlyDPI($event)"   required>
+                                           <p class="text-danger text-left" *ngIf="model1.demographics_dbi > 100">Maximum allowed value is 100</p>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-12">
+                                    <label>Campaign Budget Summary</label>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-4">
+                                    <label>Total Budget *</label>
+                                    <input class="form-control" type="text" placeholder="Total Budget *"
+                                           [(ngModel)]="model1.total_budget" maxlength="9" name="totalBudget" [textMask]="{mask: numberMask, guide: false, modelClean: true}" #totalBudget="ngModel"
+                                           (keypress)="numberOnly($event)" required>
+                                </div>
+                                <div class="col-sm-4">
+                                    <label>Digital Budget *</label>
+                                    <input class="form-control" type="text" placeholder="Digital Budget *"
+                                           [(ngModel)]="model1.digital_budget" maxlength="9" name="digitalBudget" [textMask]="{mask: numberMask, guide: false, modelClean: true}" (keyup)="numberOnly($event)" required>
+                                </div>
+                                <div class="col-sm-4">
+                                    <label>Canvassing Budget *</label>
+                                    <input class="form-control" type="text" placeholder="Canvassing Budget *"
+                                           [(ngModel)]="model1.canvassing_budget" maxlength="9" name="canvassingBudget" [textMask]="{mask: numberMask, guide: false, modelClean: true}" (keypress)="numberOnly($event)"  required>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-12">
+                                    <label>Voter Engagement Targets</label>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-6">
+                                    <label>Canvassing *</label>
+                                    <input class="form-control" type="text" placeholder="Canvassing *"
+                                           [(ngModel)]="model1.voter_engagement_targets_canvassing"
+                                           name="targetCanvassing" maxlength="9" (keypress)="numberOnly($event)" required [textMask]="{mask: numberMask, guide: false, modelClean: true}">
+                                </div>
+                                <div class="col-sm-6">
+                                    <label>Digital *</label>
+                                    <input class="form-control" type="text" placeholder="Digital *"
+                                           [(ngModel)]="model1.voter_engagement_targets_digital" name="targetDigital"
+                                           (keypress)="numberOnly($event)" maxlength="9" required [textMask]="{mask: numberMask, guide: false, modelClean: true}">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="text-left">
+                                    <button type="button" class="btn custom-btn" (click)="multiForm.select('step1')">Save and Go Back
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="text-right">
+
+                                    <button type="submit" class="btn custom-btn" [disabled]="!signupFrm2.form.valid "
+                                    (click)="enableTab(3)">Save and Continue
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </form>
+                </ng-template>
+            </ngb-tab>
+            <ngb-tab id="step3" [disabled]="!showTab3">
+                <ng-template ngbTabTitle><i class="fa fa-question-circle"></i>Candidate Questionnaire</ng-template>
+                <ng-template ngbTabContent>
+                    <form #signupFrm3="ngForm" (ngSubmit)="multiForm.select('step4');" autocomplete="on" ngNativeValidate>
+                        <div class="form-container">
+                            <div class="form-group row">
+                                <div class="col-sm-12">
+                                    <label >1) Why are you running for office? What are you passionate
+                                        about? *</label>
+                                    <textarea class="form-control" rows="3" [(ngModel)]="model1.question1"
+                                    name="question1" minlength="250" maxlength="1000" #question1="ngModel" required></textarea>
+
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <p>Minimum of 250 characters, Maximum of 1000 characters</p>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <p style="text-align: right;">Current characters count:{{model1.question1?.length}}</p>
+                                        </div>
+                                    </div>
+                                    <div *ngIf="question1.invalid && (question1.dirty || question1.touched)" class="text-danger">
+                                        <div *ngIf="question1.errors.required">
+                                            This field is required.
+                                        </div>
+                                        <div *ngIf="question1.errors.minlength">
+                                            Minimum of 250 characters required.
+                                        </div>
+                                        <div *ngIf="question1.errors.maxlength">
+                                            Maximum allowed characters is 1000 characters.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-12">
+                                    <label>2) Please describe your professional and personal background.
+                                        *</label>
+                                    <textarea class="form-control" rows="3" [(ngModel)]="model1.question2"
+                                    name="question2" minlength="250" maxlength="1000" #question2="ngModel" required></textarea>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <p>Minimum of 250 characters, Maximum of 1000 characters</p>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <p style="text-align: right;">Current characters count:{{model1.question2?.length}}</p>
+                                        </div>
+                                    </div>
+                                    <div *ngIf="question2.invalid && (question2.dirty || question2.touched)" class="text-danger">
+                                        <div *ngIf="question2.errors.required">
+                                            This field is required.
+                                        </div>
+                                        <div *ngIf="question2.errors.minlength">
+                                            Minimum of 250 characters required.
+                                        </div>
+                                        <div *ngIf="question2.errors.maxlength">
+                                            Maximum allowed characters is 1000 characters.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-12">
+                                    <label >3) what are your top three messages and why do you believe that they will resonate with your constituents? *</label>
+                                    <textarea class="form-control" rows="3" [(ngModel)]="model1.question3"
+                                    name="question3" minlength="250" maxlength="1000" #question3="ngModel" required></textarea>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <p>Minimum of 250 characters, Maximum of 1000 characters</p>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <p style="text-align: right;">Current characters count:{{model1.question3?.length}}</p>
+                                        </div>
+                                    </div>
+                                    <div *ngIf="question3.invalid && (question3.dirty || question3.touched)" class="text-danger">
+                                        <div *ngIf="question3.errors.required">
+                                            This field is required.
+                                        </div>
+                                        <div *ngIf="question3.errors.minlength">
+                                            Minimum of 250 characters required.
+                                        </div>
+                                        <div *ngIf="question3.errors.maxlength">
+                                            Maximum allowed characters is 1000 characters.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-12">
+                                    <label >4) What is your strategy for winning? *</label>
+                                    <textarea class="form-control" rows="3" [(ngModel)]="model1.question4"
+                                    name="question4" minlength="250" maxlength="1000" #question4="ngModel" required></textarea>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <p>Minimum of 250 characters, Maximum of 1000 characters</p>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <p style="text-align: right;">Current characters count:{{model1.question4?.length}}</p>
+                                        </div>
+                                    </div>
+                                    <div *ngIf="question4.invalid && (question4.dirty || question4.touched)" class="text-danger">
+                                        <div *ngIf="question4.errors.required">
+                                            This field is required.
+                                        </div>
+                                        <div *ngIf="question4.errors.minlength">
+                                            Minimum of 250 characters required.
+                                        </div>
+                                        <div *ngIf="question4.errors.maxlength">
+                                            Maximum allowed characters is 1000 characters.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="text-left">
+                                    <button type="button" class="btn custom-btn" (click)="multiForm.select('step2')">Save and Go Back
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="text-right">
+
+                                    <button type="submit" class="btn custom-btn" [disabled]="!signupFrm3.form.valid"
+                                    (click)="enableTab(4)">Save and Continue
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </form>
+                </ng-template>
+            </ngb-tab>
+            <ngb-tab id="step4" [disabled]="!showTab4">
+                <ng-template ngbTabTitle><i class="fa fa-connectdevelop"></i>Technology Deployed</ng-template>
+                <ng-template ngbTabContent>
+                    <form #signupFrm4="ngForm" (ngSubmit)="(showStep5)?multiForm.select('step5'):multiForm.select('step6');" autocomplete="on" ngNativeValidate>
+                        <ng-template matStepLabel>Technology Deployed</ng-template>
+                        <div class="form-container">
+                            <div class="form-group row technology-row">
+                                <label>Select all technology used by your campaign: </label>
+                            </div>
+                            <div class="form-group row technology-row">
+                                <div class="form-check col-sm-2">
+                                    <label class="form-check-label">
+                                        <input type="checkbox" class="form-check-input" value="1"
+                                               [(ngModel)]="techModel.technology_calls_5" name="technologyCalls5"><a href="https://5calls.org" target="_blank">5 Calls
+                                    </a> </label>
+                                </div>
+                                <div class="form-check col-sm-2">
+                                    <label class="form-check-label">
+                                        <input type="checkbox" class="form-check-input" value="2"
+                                               [(ngModel)]="techModel.technology_action_network"
+                                               name="technologyActionNetwork"><a href="https://actionnetwork.org" target="_blank">Action Network</a>
+                                    </label>
+                                </div>
+                                <div class="form-check col-sm-2">
+                                    <label class="form-check-label">
+                                        <input type="checkbox" class="form-check-input" value="3"
+                                               [(ngModel)]="techModel.technology_ballot_ready"
+                                               name="technologyBallotReady"><a href="https://www.ballotready.org" target="_blank">BallotReady</a>
+                                    </label>
+                                </div>
+                                <div class="form-check col-sm-2">
+                                    <label class="form-check-label">
+                                        <input type="checkbox" class="form-check-input" value="4"
+                                               [(ngModel)]="techModel.technology_countable" name="technology_countable"><a href="https://www.countable.us" target="_blank">Countable</a>
+                                    </label>
+                                </div>
+                                <div class="form-check col-sm-2">
+                                    <label class="form-check-label">
+                                        <input type="checkbox" class="form-check-input" value="5"
+                                               [(ngModel)]="techModel.technology_flipgrid" name="technologyFlipgrid"><a href="https://flipgrid.com" target="_blank">FlipGrid</a>
+                                    </label>
+                                </div>
+                                <div class="form-check col-sm-2">
+                                    <label class="form-check-label">
+                                        <input type="checkbox" class="form-check-input" value="6"
+                                               [(ngModel)]="techModel.technology_ground_game" name="technologyGroundGame"><a href="https://www.groundbase.io" target="_blank">GroundGame</a>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="form-group row technology-row">
+
+                                <div class="form-check col-sm-2">
+                                    <label class="form-check-label">
+                                        <input type="checkbox" class="form-check-input" value="7"
+                                               [(ngModel)]="techModel.technology_hustle" name="technologyHustle"><a href="https://hustle.com" target="_blank">Hustle</a>
+                                    </label>
+                                </div>
+                                <div class="form-check col-sm-2">
+                                    <label class="form-check-label">
+                                        <input type="checkbox" class="form-check-input" value="8"
+                                               [(ngModel)]="techModel.technology_mailchimp" name="technology_mailchimp"><a href="https://mailchimp.com" target="_blank">MailChimp</a>
+                                    </label>
+                                </div>
+                                <div class="form-check col-sm-2">
+                                    <label class="form-check-label">
+                                        <input type="checkbox" class="form-check-input" value="9"
+                                               [(ngModel)]="techModel.technology_mobilize_america"
+                                               name="technologyMobilizeAmerica"><a href="https://www.mobilizeamerica.io" target="_blank">MobilizeAmerica</a>
+                                    </label>
+                                </div>
+                                <div class="form-check col-sm-2">
+                                    <label class="form-check-label">
+                                        <input type="checkbox" class="form-check-input" value="10"
+                                               [(ngModel)]="techModel.technology_relay" name="technologyRelay"><a href="https://relaytxt.com" target="_blank">Relay</a>
+                                    </label>
+                                </div>
+                                <div class="form-check col-sm-2">
+                                    <label class="form-check-label">
+                                        <input type="checkbox" class="form-check-input" value="11"
+                                               [(ngModel)]="techModel.technology_smart_shoot" name="technologySmartShoot"><a href="https://www.smartshoot.com" target="_blank">SmartShoot</a>
+                                    </label>
+                                </div>
+                                <div class="form-check col-sm-2">
+                                    <label class="form-check-label">
+                                        <input type="checkbox" class="form-check-input" value="12"
+                                               [(ngModel)]="techModel.technology_voter_circle"
+                                               name="technology_voter_circle"><a href="https://votercircle.com" target="_blank">VoterCircle</a>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="form-group row technology-row">
+                                <div class="form-check col-sm-2">
+                                    <label class="form-check-label">
+                                        <input type="checkbox" class="form-check-input" value="13"
+                                               [(ngModel)]="techModel.technology_others" name="technology_others"> Others
+                                    </label>
+                                </div>
+                                <div class="col-sm-10">
+                                    <input class="form-control" type="text" [(ngModel)]="model1.technology_others_description"
+                                    *ngIf="techModel.technology_others == true" name="technology_others_description"
+                                    placeholder="Specify Other Technology" required>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-12">
+                                    <label>Social Media: </label>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-6">
+                                    <input class="form-control" type="text" placeholder="Website"
+                                           [(ngModel)]="model1.social_website" name="social_website">
+                                </div>
+                                <div class="col-sm-6">
+                                    <input class="form-control" type="text" placeholder="Facebook Page"
+                                           [(ngModel)]="model1.social_facebook" name="social_facebook">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-6">
+                                    <input class="form-control" type="text" placeholder="Twitter Handle"
+                                           [(ngModel)]="model1.social_twitter" name="social_twitter">
+                                </div>
+                                <div class="col-sm-6">
+                                    <input class="form-control" type="text" placeholder="Instagram Account"
+                                           [(ngModel)]="model1.social_instagram" name="social_instagram">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-6">
+                                    <input class="form-control" type="text" placeholder="Other Social-Media tools"
+                                           [(ngModel)]="model1.social_others" name="social_others">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="text-left">
+                                    <button type="button" class="btn custom-btn" (click)="multiForm.select('step3')">Save and Go Back
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="text-right">
+                                    <!-- <button type="button" class="btn custom-btn"
+                                            (click)="signupUser()">Save Test
+                                    </button> -->
+                                    <button type="submit" class="btn custom-btn" [disabled]="!signupFrm4.form.valid"
+                                    (click)="enableTab(5)" *ngIf="showStep5">Save and Continue
+                                    </button>
+                                    <button type="submit" class="btn custom-btn" [disabled]="!signupFrm4.form.valid"
+                                    (click)="enableTab(6)" *ngIf="!showStep5">Save and Continue
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </form>
+                </ng-template>
+            </ngb-tab>
+            <ngb-tab id="step5" *ngIf="showStep5" [disabled]="!showTab5">
+                <ng-template ngbTabTitle><i class="fa fa-flag-o"></i>State Candidates</ng-template>
+                <ng-template ngbTabContent >
+                    <form #signupFrm5="ngForm" (ngSubmit)="multiForm.select('step6'); groupCandidates();" autocomplete="on" ngNativeValidate>
+                        <ng-template matStepLabel>State Candidates Information</ng-template>
+                        <div class="form-container ">
+                            <div class="cloneForm">
+                            <div class="form-group row">
+                                <div class="col-sm-12">
+                                    <label>Please add State Legislative Candidates Within Campaign's Geographical
+                                        Area. </label>
+                                </div>
+                            </div>
+                            <div class="frm-row card" >
+                                <div class="form-group row">
+                                    <div class="col-sm-4">
+                                        <input class="form-control" type="text" placeholder="Name"
+                                               [(ngModel)]="stateCandidatsModel1.name" name="sc_name" required>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <input class="form-control" type="email" placeholder="Email"
+                                               #stateCandidatsModel1_email="ngModel" [(ngModel)]="stateCandidatsModel1.email" name="sc_email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required>
+                                        <div *ngIf="stateCandidatsModel1_email.invalid && (stateCandidatsModel1_email.dirty || stateCandidatsModel1_email.touched)" class="text-danger">
+                                            <div *ngIf="stateCandidatsModel1_email.errors.required">
+                                                Email is required.
+                                            </div>
+                                            <div *ngIf="stateCandidatsModel1_email.errors.pattern">
+                                                Enter a valid email address.
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <input class="form-control" type="tel" [textMask]="{mask: mask}"  [(ngModel)]="stateCandidatsModel1.phone" name="sc_phone"
+                                               #sc_phone1="ngModel" placeholder="Cell Phone(__) __-____*" minlength="14" (input)="phoneValidation()" required>
+                                        <div *ngIf="sc_phone1_error" class="text-danger">
+                                            Phone number is incomplete
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <!--<div class="col-sm-3">-->
+                                        <!--<input class="form-control" type="text" placeholder="Office"-->
+                                               <!--[(ngModel)]="stateCandidatsModel1.office" name="sc_office" required>-->
+                                    <!--</div>-->
+                                    <!--<div class="col-sm-3">-->
+                                        <!--<input class="form-control" type="text" min="1" max="1000" maxlength="4" placeholder="District"-->
+                                               <!--[(ngModel)]="stateCandidatsModel1.district" name="sc_district" (keypress)="numberOnly($event)" required>-->
+                                        <!--<p class="text-danger text-left" *ngIf="stateCandidatsModel1.district > 1000">Maximum allowed value is 1000</p>-->
+                                        <!--<p class="text-danger text-left" *ngIf="stateCandidatsModel1.district < 1">Minimum allowed value is 1</p>-->
+
+                                    <!--</div>-->
+                                    <div class="col-sm-6">
+                                        <div class="row" style="margin-top: 5px">
+                                            <div class="col-md-4">
+                                                <div class="form-check-inline">
+                                                    <input type="radio" class="form-check-input" value="SS"
+                                                           [(ngModel)]="stateCandidatsModel1.house_type"
+                                                           name="sc_house_type" id="upper1" required>
+                                                    <label class="label text-white" for="upper1">State Senate</label>
+
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-check-inline">
+                                                    <input type="radio" class="form-check-input" value="SH"
+                                                           [(ngModel)]="stateCandidatsModel1.house_type"
+                                                           name="sc_house_type" id="lower1" required>
+                                                    <label class="label text-white" for="lower1">State House</label>
+
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4" style="padding: 5px">
+                                                <div class="form-check-inline">
+                                                    <label class="label" style="padding-left:0">Incumbent ?
+                                                        <input type="checkbox" class="form-check-input"  value="false"
+                                                               [(ngModel)]="stateCandidatsModel1.incumbent" name="sc_incumbent" >
+                                                        <span class="checkmark" style="left: 15px;"></span>
+                                                    </label>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+
+
+                                    </div>
+                                </div>
+
+                            </div>
+                            <!-- <div class="form-group align-right">
+                                <div class="col-sm-12 text-right">
+                                    <button type="button" (click)="showCandidateSection(2)"
+                                    *ngIf="!showCsection2" class="btn custom-btn">Add New
+                                    </button>
+                                </div>
+                            </div> -->
+                            </div>
+                            <div class="frm-row" *ngIf="showCsection2">
+                              <div class="cloneForm">
+                                    <div class="frm-row card">
+                                            <div class="form-group row" >
+                                                    <div class="col-sm-4">
+                                                        <input class="form-control" type="text" placeholder="Name"
+                                                               [(ngModel)]="stateCandidatsModel2.name" name="sc_name1" required>
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        <input class="form-control" type="email" placeholder="Email"
+                                                               #stateCandidatsModel2_email="ngModel" [(ngModel)]="stateCandidatsModel2.email" name="sc_email1" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required>
+                                                        <div *ngIf="stateCandidatsModel2_email.invalid && (stateCandidatsModel2_email.dirty || stateCandidatsModel2_email.touched)" class="text-danger">
+                                                            <div *ngIf="stateCandidatsModel2_email.errors.required">
+                                                                Email is required.
+                                                            </div>
+                                                            <div *ngIf="stateCandidatsModel2_email.errors.pattern">
+                                                                Enter a valid email address.
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        <input class="form-control" type="tel" [textMask]="{mask: mask}"  [(ngModel)]="stateCandidatsModel2.phone" name="sc_phone1"
+                                                               #sc_phone2="ngModel" placeholder="Cell Phone(__) __-____*" minlength="14" (input)="phoneValidation()"  required>
+                                                        <div *ngIf="sc_phone2_error" class="text-danger">
+                                                            Phone number is incomplete
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                        <div class="col-sm-3">
+                                                            <input class="form-control" type="text" placeholder="Office"
+                                                                   [(ngModel)]="stateCandidatsModel2.office" name="sc_office1" required>
+                                                        </div>
+                                                        <div class="col-sm-3">
+                                                            <input class="form-control" type="number" min="1" maxlength="4" max="1000" placeholder="District"
+                                                                   [(ngModel)]="stateCandidatsModel2.district" name="sc_district1" required>
+                                                            <p class="text-danger text-left" *ngIf="stateCandidatsModel2.district > 1000">Maximum allowed value is 1000</p>
+                                                            <p class="text-danger text-left" *ngIf="stateCandidatsModel2.district < 1">Minimum allowed value is 1</p>
+
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <div class="row" style="margin-top: 5px">
+                                                                <div class="col-md-4">
+                                                                    <div class="form-check-inline">
+                                                                        <input type="radio" class="form-check-input" value="SS"
+                                                                               [(ngModel)]="stateCandidatsModel2.house_type"
+                                                                               name="sc_house_type1" id="stateCandidatsModel2Upper" required>
+                                                                        <label class="label" for="stateCandidatsModel2Upper">State Senate</label>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    <div class="form-check-inline">
+                                                                        <input type="radio" class="form-check-input" value="SH"
+                                                                               [(ngModel)]="stateCandidatsModel2.house_type"
+                                                                               name="sc_house_type1" id="stateCandidatsModel2Lower" required>
+                                                                        <label class="label" for="stateCandidatsModel2Lower">State House</label>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-4" style="padding: 5px;">
+                                                                    <div class="form-check-inline">
+                                                                            <label class="label" style="padding-left: 0">Incumbent
+                                                                        <input type="checkbox" class="form-check-input" value="true"
+                                                                               [(ngModel)]="stateCandidatsModel2.incumbent"
+                                                                               name="sc_incumbent1">
+                                                                               <span class="checkmark" style="left:15px"></span>
+                                                                            </label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+
+
+                                                        </div>
+                                                    </div>
+                                    </div>
+                              </div>
+
+                                <div class="form-group row">
+                                    <div class="col-sm-12 text-right">
+                                        <button type="button" (click)="deleteCandidateSection(2)"
+                                        class="btn custom-btn">Delete
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="frm-row" *ngIf="showCsection3">
+                                <div class="cloneForm">
+                                    <div class="frm-row card">
+                                            <div class="form-group row">
+                                                    <div class="col-sm-4">
+                                                        <input class="form-control" type="text" placeholder="Name"
+                                                               [(ngModel)]="stateCandidatsModel3.name" name="sc_name3" required>
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        <input class="form-control" type="email" placeholder="Email"
+                                                              #stateCandidatsModel3_email="ngModel" [(ngModel)]="stateCandidatsModel3.email" name="sc_email3" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required>
+                                                        <div *ngIf="stateCandidatsModel3_email.invalid && (stateCandidatsModel3_email.dirty || stateCandidatsModel3_email.touched)" class="text-danger">
+                                                            <div *ngIf="stateCandidatsModel3_email.errors.required">
+                                                                Email is required.
+                                                            </div>
+                                                            <div *ngIf="stateCandidatsModel3_email.errors.pattern">
+                                                                Enter a valid email address.
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        <input class="form-control" type="tel" [textMask]="{mask: mask}"  [(ngModel)]="stateCandidatsModel3.phone" name="sc_phone3"
+                                                               #sc_phone3="ngModel" placeholder="Cell Phone(__) __-____*" minlength="14" (input)="phoneValidation()"  required>
+                                                        <div *ngIf="sc_phone3_error" class="text-danger">
+                                                            Phone number is incomplete
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <div class="col-sm-3">
+                                                        <input class="form-control" type="text" placeholder="Office"
+                                                               [(ngModel)]="stateCandidatsModel3.office" name="sc_office3" required>
+                                                    </div>
+                                                    <div class="col-sm-3">
+                                                        <input class="form-control" type="number" min="1" max="1000" maxlength="4" placeholder="District"
+                                                               [(ngModel)]="stateCandidatsModel3.district" name="sc_district3" required>
+                                                        <p class="text-danger text-left" *ngIf="stateCandidatsModel3.district > 1000">Maximum allowed value is 1000</p>
+                                                        <p class="text-danger text-left" *ngIf="stateCandidatsModel3.district < 1">Minimum allowed value is 1</p>
+
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <div class="row" style="margin-top: 5px">
+                                                            <div class="col-md-4">
+                                                                    <div class="form-check-inline">
+                                                                            <input type="radio" class="form-check-input" value="SS"
+                                                                            [(ngModel)]="stateCandidatsModel3.house_type"
+                                                                            name="sc_house_type3" id="label-uh-3" required>
+                                                                            <label class="label" for="label-uh-3">State Senate</label>
+                                                                        </div>
+                                                            </div>
+                                                            <div class="col-md-4">
+                                                                    <div class="form-check-inline">
+                                                                            <input type="radio" class="form-check-input" value="SH"
+                                                                            [(ngModel)]="stateCandidatsModel3.house_type"
+                                                                            name="sc_house_type3" id="label-lh3" required>
+                                                                            <label class="label" for="label-lh3">State House</label>
+
+                                                                        </div>
+                                                            </div>
+                                                            <div class="col-md-4" style="padding: 5px;">
+                                                                    <div class="form-check-inline">
+                                                                            <label class="label" style="padding-left: 0">Incumbent
+                                                                            <input type="checkbox" class="form-check-input" value="true"
+                                                                            [(ngModel)]="stateCandidatsModel3.incumbent"
+                                                                            name="sc_incumbent3">
+
+                                                                            <span class="checkmark" style="left:15px"></span>
+                                                                        </label>
+                                                                        </div>
+                                                            </div>
+                                                        </div>
+
+
+
+                                                    </div>
+                                                </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-12 text-right">
+                                        <button type="button" (click)="deleteCandidateSection(3)"
+                                         class="btn custom-btn">Delete
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="frm-row" *ngIf="showCsection4">
+                                <div class="cloneForm">
+                                    <div class="frm-row card">
+                                            <div class="form-group row">
+                                                    <div class="col-sm-4">
+                                                        <input class="form-control" type="text" placeholder="Name"
+                                                               [(ngModel)]="stateCandidatsModel4.name" name="sc_name4" required>
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        <input class="form-control" type="email" placeholder="Email"
+                                                               [(ngModel)]="stateCandidatsModel4.email" name="stateCandidatsModel4_email"
+                                                               #stateCandidatsModel4_email="ngModel" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required>
+                                                        <div *ngIf="stateCandidatsModel4_email.invalid && (stateCandidatsModel4_email.dirty || stateCandidatsModel4_email.touched)" class="text-danger">
+                                                            <div *ngIf="stateCandidatsModel4_email.errors.required">
+                                                                Email is required.
+                                                            </div>
+                                                            <div *ngIf="stateCandidatsModel4_email.errors.pattern">
+                                                                Enter a valid email address.
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        <input class="form-control" type="tel" [textMask]="{mask: mask}"  [(ngModel)]="stateCandidatsModel4.phone" name="sc_phone4"
+                                                               #sc_phone4="ngModel" placeholder="Phone(__) __-____*" minlength="14" (input)="phoneValidation()" required>
+                                                        <div *ngIf="sc_phone4_error" class="text-danger">
+                                                            Phone number is incomplete
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <div class="col-sm-3">
+                                                        <input class="form-control" type="text" placeholder="Office"
+                                                               [(ngModel)]="stateCandidatsModel4.office" name="sc_office4" required>
+                                                    </div>
+                                                    <div class="col-sm-3">
+                                                        <input class="form-control" type="number" min="1" max="1000" maxlength="4" placeholder="District"
+                                                               [(ngModel)]="stateCandidatsModel4.district" name="sc_district4" required>
+                                                        <p class="text-danger text-left" *ngIf="stateCandidatsModel4.district > 1000">Maximum allowed value is 1000</p>
+                                                        <p class="text-danger text-left" *ngIf="stateCandidatsModel4.district < 1">Minimum allowed value is 1</p>
+
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <div class="row">
+                                                            <div class="col-md-4">
+                                                                    <div class="form-check-inline">
+                                                                            <input type="radio" class="form-check-input" value="SS"
+                                                                            [(ngModel)]="stateCandidatsModel4.house_type"
+                                                                            name="sc_house_type4" id="label-uh-4" required>
+                                                                            <label class="label" for="label-uh-4">State Senate</label>
+                                                                        </div>
+                                                            </div>
+                                                            <div class="col-md-4">
+                                                                    <div class="form-check-inline">
+                                                                            <input type="radio" class="form-check-input" value="SH"
+                                                                            [(ngModel)]="stateCandidatsModel4.house_type"
+                                                                            name="sc_house_type4" id="label-lh4" required>
+                                                                            <label class="label" for="label-lh4">State House</label>
+
+                                                                        </div>
+                                                            </div>
+                                                            <div class="col-md-4" >
+                                                                    <div class="form-check-inline">
+                                                                            <label class="label" style="padding-left: 0">Incumbent
+                                                                            <input type="checkbox" class="form-check-input" value="true"
+                                                                            [(ngModel)]="stateCandidatsModel4.incumbent"
+                                                                            name="sc_incumbent4">
+
+                                                                            <span class="checkmark" style="left:15px"></span>
+                                                                        </label>
+                                                                        </div>
+                                                            </div>
+                                                        </div>
+
+
+
+                                                    </div>
+                                                </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-12 text-right">
+                                        <button type="button" (click)="deleteCandidateSection(4)"
+                                        class="btn custom-btn">Delete
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="frm-row" *ngIf="showCsection5">
+                                <div class="cloneForm">
+                                    <div class="frm-row card">
+                                            <div class="form-group row">
+                                                    <div class="col-sm-4">
+                                                        <input class="form-control" type="text" placeholder="Name"
+                                                               [(ngModel)]="stateCandidatsModel5.name" name="sc_name5" required>
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        <input class="form-control" type="email" placeholder="Email"
+                                                               [(ngModel)]="stateCandidatsModel5.email" name="stateCandidatsModel5_email"
+                                                               #stateCandidatsModel5_email="ngModel" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required>
+                                                        <div *ngIf="stateCandidatsModel5_email.invalid && (stateCandidatsModel5_email.dirty || stateCandidatsModel5_email.touched)" class="text-danger">
+                                                            <div *ngIf="stateCandidatsModel5_email.errors.required">
+                                                                Email is required.
+                                                            </div>
+                                                            <div *ngIf="stateCandidatsModel5_email.errors.pattern">
+                                                                Enter a valid email address.
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        <input class="form-control" type="tel" [textMask]="{mask: mask}"  [(ngModel)]="stateCandidatsModel5.phone" name="sc_phone5"
+                                                               #sc_phone5="ngModel" placeholder="Phone(__) __-____*" minlength="14" (input)="phoneValidation()"  required>
+                                                        <div *ngIf="sc_phone5_error" class="text-danger">
+                                                            Phone number is incomplete
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <div class="col-sm-3">
+                                                        <input class="form-control" type="text" placeholder="Office"
+                                                               [(ngModel)]="stateCandidatsModel5.office" name="sc_office5" required>
+                                                    </div>
+                                                    <div class="col-sm-3">
+                                                        <input class="form-control" type="number" min="1" maxlength="4" max="1000" placeholder="District"
+                                                               [(ngModel)]="stateCandidatsModel5.district" name="sc_district5" required>
+                                                        <p class="text-danger text-left" *ngIf="stateCandidatsModel5.district > 1000">Maximum allowed value is 1000</p>
+                                                        <p class="text-danger text-left" *ngIf="stateCandidatsModel5.district < 1">Minimum allowed value is 1</p>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <div class="row">
+                                                            <div class="col-md-4">
+                                                                    <div class="form-check-inline">
+                                                                            <input type="radio" class="form-check-input" value="SS"
+                                                                            [(ngModel)]="stateCandidatsModel5.house_type"
+                                                                            name="sc_house_type5" id="label-uh-5" required>
+                                                                            <label class="label" for="label-uh-5">State Senate</label>
+                                                                        </div>
+                                                            </div>
+                                                            <div class="col-md-4">
+                                                                    <div class="form-check-inline">
+                                                                            <input type="radio" class="form-check-input" value="SH"
+                                                                            [(ngModel)]="stateCandidatsModel5.house_type"
+                                                                            name="sc_house_type5" id="label-lh5" required>
+                                                                            <label class="label" for="label-lh5">State House</label>
+
+                                                                        </div>
+                                                            </div>
+                                                            <div class="col-md-4" style="padding: 5px">
+                                                                    <div class="form-check-inline">
+                                                                            <label class="label" style="padding-left: 0">Incumbent
+                                                                            <input type="checkbox" class="form-check-input" value="true"
+                                                                            [(ngModel)]="stateCandidatsModel5.incumbent"
+                                                                            name="sc_incumbent5">
+
+                                                                            <span class="checkmark" style="left:15px"></span>
+                                                                        </label>
+                                                                        </div>
+                                                            </div>
+                                                        </div>
+
+
+
+                                                    </div>
+                                                </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-12 text-right">
+                                        <button type="button" (click)="deleteCandidateSection(5)"
+                                        class="btn custom-btn">Delete
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="frm-row" *ngIf="showCsection6">
+                              <div class="cloneForm">
+                                    <div class="frm-row card">
+                                            <div class="form-group row">
+                                                    <div class="col-sm-4">
+                                                        <input class="form-control" type="text" placeholder="Name"
+                                                               [(ngModel)]="stateCandidatsModel6.name" name="sc_name6" required>
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        <input class="form-control" type="email" placeholder="Email"
+                                                               #stateCandidatsModel6_email="ngModel" [(ngModel)]="stateCandidatsModel6.email" name="sc_email6" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required>
+                                                        <div *ngIf="stateCandidatsModel6_email.invalid && (stateCandidatsModel6_email.dirty || stateCandidatsModel6_email.touched)" class="text-danger">
+                                                            <div *ngIf="stateCandidatsModel6_email.errors.required">
+                                                                Email is required.
+                                                            </div>
+                                                            <div *ngIf="stateCandidatsModel6_email.errors.pattern">
+                                                                Enter a valid email address.
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-4">
+
+                                                        <input class="form-control" type="tel" [textMask]="{mask: mask}"  [(ngModel)]="stateCandidatsModel6.phone" name="sc_phone6"
+                                                               #sc_phone6="ngModel" placeholder="Cell Phone(__) __-____*" minlength="14" (input)="phoneValidation()"  required>
+
+                                                        <div *ngIf="sc_phone6_error" class="text-danger">
+                                                            Phone number is incomplete
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                        <div class="col-sm-3">
+                                                            <input class="form-control" type="text" placeholder="Office"
+                                                                   [(ngModel)]="stateCandidatsModel6.office" name="sc_office6" required>
+                                                        </div>
+                                                        <div class="col-sm-3">
+                                                            <input class="form-control" type="number" min="1" max="1000" maxlength="4" placeholder="District"
+                                                                   [(ngModel)]="stateCandidatsModel6.district" name="sc_district6" required>
+                                                            <p class="text-danger text-left" *ngIf="stateCandidatsModel6.district > 1000">Maximum allowed value is 1000</p>
+                                                            <p class="text-danger text-left" *ngIf="stateCandidatsModel6.district < 1">Minimum allowed value is 1</p>
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <div class="row">
+                                                                <div class="col-md-4">
+                                                                    <div class="form-check-inline">
+                                                                        <input type="radio" class="form-check-input" value="SS"
+                                                                               [(ngModel)]="stateCandidatsModel6.house_type"
+                                                                               name="sc_house_type6" id="stateCandidatsModel6Upper" required>
+                                                                        <label class="label" for="stateCandidatsModel6Upper">State Senate</label>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    <div class="form-check-inline">
+                                                                        <input type="radio" class="form-check-input" value="SH"
+                                                                               [(ngModel)]="stateCandidatsModel6.house_type"
+                                                                               name="sc_house_type6" id="stateCandidatsModel6Lower" required>
+                                                                        <label class="label" for="stateCandidatsModel6Lower">State House</label>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-4" style="padding: 5px">
+                                                                    <div class="form-check-inline">
+                                                                            <label class="label" style="padding-left: 0">Incumbent
+                                                                        <input type="checkbox" class="form-check-input" value="true"
+                                                                               [(ngModel)]="stateCandidatsModel6.incumbent"
+                                                                               name="sc_incumbent6">
+                                                                               <span class="checkmark" style="left:15px"></span>
+                                                                            </label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+
+
+                                                        </div>
+                                                    </div>
+                                    </div>
+                              </div>
+
+                                <div class="form-group row">
+                                    <div class="col-sm-12 text-right">
+                                        <button type="button" (click)="deleteCandidateSection(6)"
+                                        class="btn custom-btn">Delete
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="frm-row" *ngIf="showCsection7">
+                              <div class="cloneForm">
+                                    <div class="frm-row card">
+                                            <div class="form-group row">
+                                                    <div class="col-sm-4">
+                                                        <input class="form-control" type="text" placeholder="Name"
+                                                               [(ngModel)]="stateCandidatsModel7.name" name="sc_name7" required>
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        <input class="form-control" type="email" placeholder="Email"
+                                                               #stateCandidatsModel7_email="ngModel" [(ngModel)]="stateCandidatsModel7.email" name="sc_email7" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required>
+                                                        <div *ngIf="stateCandidatsModel7_email.invalid && (stateCandidatsModel7_email.dirty || stateCandidatsModel7_email.touched)" class="text-danger">
+                                                            <div *ngIf="stateCandidatsModel7_email.errors.required">
+                                                                Email is required.
+                                                            </div>
+                                                            <div *ngIf="stateCandidatsModel7_email.errors.pattern">
+                                                                Enter a valid email address.
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-4">
+
+                                                        <input class="form-control" type="tel" [textMask]="{mask: mask}"  [(ngModel)]="stateCandidatsModel7.phone" name="sc_phone7"
+                                                               #sc_phone7="ngModel" placeholder="Cell Phone(__) __-____*" minlength="14" (input)="phoneValidation()"  required>
+
+                                                        <div *ngIf="sc_phone7_error" class="text-danger">
+                                                            Phone number is incomplete
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                        <div class="col-sm-3">
+                                                            <input class="form-control" type="text" placeholder="Office"
+                                                                   [(ngModel)]="stateCandidatsModel7.office" name="sc_office7" required>
+                                                        </div>
+                                                        <div class="col-sm-3">
+                                                            <input class="form-control" type="number" min="1" max="1000" maxlength="4" placeholder="District"
+                                                                   [(ngModel)]="stateCandidatsModel7.district" name="sc_district7" required>
+                                                            <p class="text-danger text-left" *ngIf="stateCandidatsModel7.district > 1000">Maximum allowed value is 1000</p>
+                                                            <p class="text-danger text-left" *ngIf="stateCandidatsModel7.district < 1">Minimum allowed value is 1</p>
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <div class="row">
+                                                                <div class="col-md-4">
+                                                                    <div class="form-check-inline">
+                                                                        <input type="radio" class="form-check-input" value="SS"
+                                                                               [(ngModel)]="stateCandidatsModel7.house_type"
+                                                                               name="sc_house_type7" id="stateCandidatsModel7Upper" required>
+                                                                        <label class="label" for="stateCandidatsModel7Upper">State Senate</label>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    <div class="form-check-inline">
+                                                                        <input type="radio" class="form-check-input" value="SH"
+                                                                               [(ngModel)]="stateCandidatsModel7.house_type"
+                                                                               name="sc_house_type7" id="stateCandidatsModel7Lower" required>
+                                                                        <label class="label" for="stateCandidatsModel7Lower">State House</label>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-4" style="padding: 5px">
+                                                                    <div class="form-check-inline">
+                                                                            <label class="label" style="padding-left: 0">Incumbent
+                                                                        <input type="checkbox" class="form-check-input" value="true"
+                                                                               [(ngModel)]="stateCandidatsModel7.incumbent"
+                                                                               name="sc_incumbent7">
+                                                                               <span class="checkmark" style="left:15px"></span>
+                                                                            </label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+
+
+                                                        </div>
+                                                    </div>
+                                    </div>
+                              </div>
+
+                                <div class="form-group row">
+                                    <div class="col-sm-12 text-right">
+                                        <button type="button" (click)="deleteCandidateSection(7)"
+                                        class="btn custom-btn">Delete
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="frm-row" *ngIf="showCsection8">
+                              <div class="cloneForm">
+                                    <div class="frm-row card">
+                                            <div class="form-group row">
+                                                    <div class="col-sm-4">
+                                                        <input class="form-control" type="text" placeholder="Name"
+                                                               [(ngModel)]="stateCandidatsModel8.name" name="sc_name8" required>
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        <input class="form-control" type="email" placeholder="Email"
+                                                               #stateCandidatsModel8_email="ngModel" [(ngModel)]="stateCandidatsModel8.email" name="sc_email8" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required>
+                                                        <div *ngIf="stateCandidatsModel8_email.invalid && (stateCandidatsModel8_email.dirty || stateCandidatsModel8_email.touched)" class="text-danger">
+                                                            <div *ngIf="stateCandidatsModel8_email.errors.required">
+                                                                Email is required.
+                                                            </div>
+                                                            <div *ngIf="stateCandidatsModel8_email.errors.pattern">
+                                                                Enter a valid email address.
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-4">
+
+                                                        <input class="form-control" type="tel" [textMask]="{mask: mask}"  [(ngModel)]="stateCandidatsModel8.phone" name="sc_phone8"
+                                                               #sc_phone7="ngModel" placeholder="Cell Phone(__) __-____*" minlength="14" (input)="phoneValidation()"  required>
+
+                                                        <div *ngIf="sc_phone8_error" class="text-danger">
+                                                            Phone number is incomplete
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                        <div class="col-sm-3">
+                                                            <input class="form-control" type="text" placeholder="Office"
+                                                                   [(ngModel)]="stateCandidatsModel8.office" name="sc_office8" required>
+                                                        </div>
+                                                        <div class="col-sm-3">
+                                                            <input class="form-control" type="number" min="1" max="1000" maxlength="4" placeholder="District"
+                                                                   [(ngModel)]="stateCandidatsModel8.district" name="sc_district8" required>
+                                                            <p class="text-danger text-left" *ngIf="stateCandidatsModel8.district > 1000">Maximum allowed value is 1000</p>
+                                                            <p class="text-danger text-left" *ngIf="stateCandidatsModel8.district < 1">Minimum allowed value is 1</p>
+
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <div class="row">
+                                                                <div class="col-md-4">
+                                                                    <div class="form-check-inline">
+                                                                        <input type="radio" class="form-check-input" value="SS"
+                                                                               [(ngModel)]="stateCandidatsModel8.house_type"
+                                                                               name="sc_house_type8" id="stateCandidatsModel8Upper" required>
+                                                                        <label class="label" for="stateCandidatsModel8Upper">State Senate</label>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    <div class="form-check-inline">
+                                                                        <input type="radio" class="form-check-input" value="SH"
+                                                                               [(ngModel)]="stateCandidatsModel8.house_type"
+                                                                               name="sc_house_type8" id="stateCandidatsModel8Lower" required>
+                                                                        <label class="label" for="stateCandidatsModel8Lower">State House</label>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-4" style="padding: 5px">
+                                                                    <div class="form-check-inline">
+                                                                            <label class="label" style="padding-left: 0">Incumbent
+                                                                        <input type="checkbox" class="form-check-input" value="true"
+                                                                               [(ngModel)]="stateCandidatsModel8.incumbent"
+                                                                               name="sc_incumbent8">
+                                                                               <span class="checkmark" style="left:15px"></span>
+                                                                            </label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+
+
+                                                        </div>
+                                                    </div>
+                                    </div>
+                              </div>
+
+                                <div class="form-group row">
+                                    <div class="col-sm-12 text-right">
+                                        <button type="button" (click)="deleteCandidateSection(8)"
+                                        class="btn custom-btn">Delete
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-12 text-right">
+                                    <button type="button" (click)="showCandidateSection(latestNewCsection)"
+                                    *ngIf="latestNewCsection < 8 && signupFrm5.form.valid" class="btn custom-btn">Add New
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+
+                            <div class="col-md-6">
+                                <div class="text-left">
+                                    <button type="button" class="btn custom-btn" (click)="multiForm.select('step4')">Save and Go Back
+                                    </button>
+                                </div>
+
+                            </div>
+                            <div class="col-md-6">
+                                <div class="text-right">
+                                    <button type="submit" class="btn custom-btn" [disabled]="!signupFrm5.form.valid"
+                                    (click)="enableTab(6)">Save and Continue
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+
+                </ng-template>
+
+            </ngb-tab>
+            <ngb-tab id="step6" [disabled]="!showTab6">
+                <ng-template ngbTabTitle><i class="fa fa-list"></i>Summary</ng-template>
+                <ng-template ngbTabContent>
+                    <div class="form-container ">
+                        <h3 class="review-header text-white">Review Registration Information</h3>
+                        <div class="row">
+                            <div class="col-md-6">
+                               <div class="card">
+                                   <div class="form-group review-title">
+                                       <h4>Contact Details </h4>
+                                   </div>
+                                   <div class="row">
+                                       <div class="col-md-6">
+                                           <div class="form-group">
+                                               <p class="review-sub-title">Candidate: </p>
+                                               <p class="review-text">{{model1.prefix+' '+model1.first_name+' '+model1.last_name}}</p>
+                                               <p class="review-text">{{model1.office_street}}</p>
+                                               <p class="review-text">{{model1.office_address}} {{model1.office_city}}</p>
+                                               <p class="review-text">{{model1.office_state1}},
+                                                   {{model1.office_postal_code}}</p>
+                                           </div>
+                                       </div>
+                                       <div class="col-md-6">
+                                           <div class="form-group">
+                                               <p class="review-text" style=" word-wrap: break-word; ">{{model1.office_email}}</p>
+                                               <p class="review-text">{{model1.office_phone}}</p>
+                                           </div>
+
+                                           <div class="form-group">
+                                               <p class="review-sub-title">Campaign Manager: </p>
+                                               <p class="review-text">{{model1.campaign_manager_name}}</p>
+                                               <p class="review-text" style=" word-wrap: break-word; ">{{model1.campaign_manager_email}}</p>
+                                               <p class="review-text">{{model1.campaign_manager_cell_phone}}</p>
+                                           </div>
+                                       </div>
+                                   </div>
+                               </div>
+                            </div>
+                            <div class="col-md-6">
+                              <div class="card">
+                                  <div class="form-group review-title">
+                                      <h4>Candidate Questionnaire</h4>
+                                  </div>
+
+                                  <div class="form-group">
+                                      <p class="review-sub-title">1) Why are you running for office? What are you
+                                          passionate about? </p>
+                                      <p class="review-text" style="overflow-x: scroll;">{{model1.question1}}</p>
+                                  </div>
+                                  <div class="form-group">
+                                      <p class="review-sub-title">2) Please describe your professional and personal
+                                          background. </p>
+                                      <p class="review-text" style="overflow-x: scroll;">{{model1.question2}}</p>
+                                  </div>
+                                  <div class="form-group">
+                                      <p class="review-sub-title">3) What are your top three messages and why do you
+                                          believe that they will
+                                          resonate with your constituents?</p>
+                                      <p class="review-text" style="overflow-x: scroll;">{{model1.question3}}</p>
+                                  </div>
+                                  <div class="form-group">
+                                      <p class="review-sub-title">4) What is your strategy for winning?</p>
+                                      <p class="review-text" style="overflow-x: scroll;">{{model1.question4}}</p>
+                                  </div>
+                              </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+
+                            <div class="col-md-6">
+                                <div class="card">
+                                    <div class="form-group review-title">
+                                        <h4>Technology Deployed</h4>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <p class="review-sub-title">Technology used by your campaign: </p>
+                                                <p class="review-text">
+                                                    <span [hidden]="!techModel.technology_calls_5">5 Calls, </span>
+                                                    <span [hidden]="!techModel.technology_flipgrid">FlipGrid, </span>
+                                                    <span [hidden]="!techModel.technology_mobilize_america">MobilizeAmerica, </span>
+                                                    <span [hidden]="!techModel.technology_action_network">Action Network, </span>
+                                                    <span [hidden]="!techModel.technology_ground_game">GroundGame, </span>
+                                                    <span [hidden]="!techModel.technology_relay">Relay, </span>
+                                                    <span [hidden]="!techModel.technology_ballot_ready">BallotReady, </span>
+                                                    <span [hidden]="!techModel.technology_hustle">Hustle, </span>
+                                                    <span [hidden]="!techModel.technology_smart_shoot">SmartShoot, </span>
+                                                    <span [hidden]="!techModel.technology_countable">Countable, </span>
+                                                    <span [hidden]="!techModel.technology_mailchimp">MailChimp, </span>
+                                                    <span [hidden]="!techModel.technology_voter_circle">VoterCircle, </span>
+                                                    <span [hidden]="!techModel.technology_others">Others: {{model1.technology_others_description}}</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <p class="review-sub-title">Campaign Website </p>
+                                                <p class="review-text">{{model1.social_website}}</p>
+                                            </div>
+                                            <div class="form-group">
+                                                <p class="review-sub-title">Campaign Twitter Handle </p>
+                                                <p class="review-text">{{model1.social_twitter}}</p>
+                                            </div>
+                                            <div class="form-group">
+                                                <p class="review-sub-title">Other Social-Media Tools </p>
+                                                <p class="review-text">{{model1.social_others}}</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <p class="review-sub-title">Campaign Facebook Page </p>
+                                                <p class="review-text">{{model1.social_facebook}}</p>
+                                            </div>
+                                            <div class="form-group">
+                                                <p class="review-sub-title">Campaign Instagram Account </p>
+                                                <p class="review-text">{{model1.social_instagram}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card">
+                                <div class="form-group review-title">
+                                <h4>District Demographics</h4>
+                                </div>
+                                    <div class="form-group row review-text-center">
+                                        <div class="col-sm-12">
+                                            <p>Population</p>
+                                            <p>{{model1.demographics_population}}</p>
+                                        </div>
+                                        <div class="col-sm-12">
+                                            <p>Registered Voters</p>
+                                            <p>{{model1.demographics_registered_voters}}</p>
+                                        </div>
+                                        <div class="col-sm-12">
+                                            <p>Democratic Performance Indicator</p>
+                                            <p>{{model1.demographics_dbi}}%</p>
+                                        </div>
+                                        <!-- <div class="col-sm-4">
+                                          <p>Number of Votes Required to Win</p>
+                                          <p>21,768</p>
+                                        </div> -->
+                                    </div>
+
+
+                                </div>
+
+                            </div>
+                            </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="card">
+                                    <div class="form-group review-title">
+                                        <h4>Campaign Budget Summary</h4>
+                                    </div>
+                                    <div class="form-group row review-text-center">
+                                        <div class="col-sm-4">
+                                            <p>Total Budget</p>
+                                            <p>{{model1.total_budget}}</p>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <p>Digital Budget</p>
+                                            <p>{{model1.digital_budget}}</p>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <p>Canvassing Budget</p>
+                                            <p>{{model1.canvassing_budget}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                               <div class="card">
+                                   <div class="form-group review-title">
+                                       <h4>Voter Engagement Targets</h4>
+                                   </div>
+                                   <div class="form-group row review-text-center">
+                                        <div class="col-sm-6">
+                                            <p>Canvassing</p>
+                                            <p>{{model1.voter_engagement_targets_canvassing}}</p>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <p>Digital</p>
+                                            <p>{{model1.voter_engagement_targets_digital}}</p>
+                                        </div>
+                                    </div>
+                                   <!-- <div class="form-group row review-text-center">
+                                       <div class="col-sm-4">
+                                           <p>Weekly Number of Emails</p>
+                                           <p>1,200</p>
+                                       </div>
+                                       <div class="col-sm-4">
+                                           <p>Weekly Number of Texts</p>
+                                           <p>4,500</p>
+                                       </div>
+                                       <div class="col-sm-4">
+                                           <p>Weekly Number of Social-Media Posts</p>
+                                           <p>10</p>
+                                       </div>
+                                   </div>
+                                   <div class="form-group row review-text-center">
+                                       <div class="col-sm-4">
+                                           <p>Weekly Number of Phone Calls</p>
+                                           <p>1,200</p>
+                                       </div>
+                                       <div class="col-sm-4">
+                                           <p>Weekly Number of Doors Knocked</p>
+                                           <p>4,500</p>
+                                       </div>
+                                       <div class="col-sm-4">
+                                           <p>Weekly Number of Events</p>
+                                           <p>10</p>
+                                       </div>
+                                   </div> -->
+                               </div>
+                            </div>
+                        </div>
+                                <div class="row" *ngIf="showStep5">
+                                    <div class="col-md-12">
+                                        <div class="card">
+                                            <div class="form-group review-title">
+                                                <h4>State Campaign Collaboration Information</h4>
+                                            </div>
+                                            <div class="form-group row review-text-center">
+                                                <div class="col-sm-12">
+                                                    <div class="table-responsive">
+                                                            <table class="table table-bordered">
+                                                                    <thead>
+                                                                    <tr>
+                                                                        <th>#</th>
+                                                                        <th>Candidate</th>
+                                                                        <th>Email</th>
+                                                                        <th>Cell Phone</th>
+                                                                        <th>Office</th>
+                                                                        <th>District</th>
+                                                                        <th>Incumbent</th>
+                                                                    </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                    <tr *ngFor="let row of candidates; let rowNum = index;">
+                                                                        <td>{{rowNum+1}}</td>
+                                                                        <td>{{row.name}}</td>
+                                                                        <td>{{row.email}}</td>
+                                                                        <td>{{row.phone}}</td>
+                                                                        <td>{{row.office}}</td>
+                                                                        <td>{{row.district}}</td>
+                                                                        <td>{{row.incumbent}}</td>
+                                                                    </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="text-left">
+                                <button class="btn custom-btn" (click)="multiForm.select('step4')">Save and Go Back</button>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="text-right">
+                                <button type="button" class="btn custom-btn" (click)="signupUser();">Save and Continue</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </ng-template>
+            </ngb-tab>
+        </ngb-tabset>
+        <div class="tab-border"></div>
+    </div>
+</div>
+
+<app-footer></app-footer>

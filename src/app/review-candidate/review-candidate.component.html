@@ -1,0 +1,337 @@
+<div class="container">
+        <app-header></app-header>
+    </div>
+<div class="wrapper">
+    <div class="container">
+        <div class="page-wraper">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="page-header"><h3>Review Candidate</h3>
+                    </div>
+                    <div class="form-group">
+                        <form #reviewCmntForm="ngForm" autocomplete="on">
+                            <div class="form-container">
+                                <div class="form-group row">
+                                    <div class="col-sm-10">
+                                        <label for="comment">Reviewer Comment *</label>
+                                        <textarea class="form-control" rows="3" [(ngModel)]="reviewerModel.comment"
+                                                  name="comment" [disabled]="alreadyReviewed" id="comment" required></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-6">
+                                        <label for="rating">Reviewer Rating *</label>
+                                        <select class="form-control" id="rating"
+                                                [(ngModel)]="reviewerModel.rating" name="rating" [disabled]="alreadyReviewed">
+                                            <option value="" disabled>Select Rating</option>
+                                            <option *ngFor="let rating of ratings" value="{{rating.id}}">{{rating.name}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <button [hidden]="alreadyReviewed" type="submit"  class="btn custom-btn" [disabled]="!reviewCmntForm.form.valid"  (click)="submitComment()">SUBMIT REVIEW </button>
+                                <button type="button" (click)="locationSer.back();" class="btn custom-btn">Cancel</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="form-group ">
+                        <ngb-accordion [closeOthers]="true" activeIds="static-1">
+                            <ngb-panel id="static-1" title="Contact Information">
+                                <ng-template ngbPanelContent>
+                                    <div class="row form-container">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <h4 class="review-sub-title">Candidate: </h4>
+                                                <div class="desc">
+                                                    <p class="">{{model1.acct_prefix+' '+model1.acct_firstname+' '+model1.acct_lastname}}</p>
+                                                    <p class="">{{model1.campaign_street}}</p>
+                                                    <p class="">{{model1.campaign_suite}}, {{model1.campaign_city}}</p>
+                                                    <p class="">{{model1.campaign_state}}, {{model1.campaign_postal_code}}</p>
+                                                    <div class="form-group">
+                                                        <p class="">{{model1.acct_email}}</p>
+                                                        <p class="">{{model1.acct_phone}}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <h4 class="review-sub-title">Campaign Manager: </h4>
+                                                <div class="desc">
+                                                    <p class="">{{model1.campaign_manager}}</p>
+                                                    <p class="">{{model1.campaign_manager_email}}</p>
+                                                    <p class="">{{model1.campaign_manager_cellphone}}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </ng-template>
+                            </ngb-panel>
+                            <ngb-panel id="static-2" title="Candidate Questionnaire">
+                                <ng-template ngbPanelContent>
+                                    <div class="form-container">
+                                        <div class="form-group">
+                                            <p class="qus">1) Why are you running for office? What are you passionate
+                                                about? </p>
+                                            <p class="desc" style="overflow-x: scroll;">{{model1.questionnaire1}}</p>
+                                        </div>
+                                        <div class="form-group">
+                                            <p class="qus">2) Please describe your professional and personal
+                                                background. </p>
+                                            <p class="desc" style="overflow-x: scroll;">{{model1.questionnaire2}}</p>
+                                        </div>
+                                        <div class="form-group">
+                                            <p class="qus">3)what are your top 3 messages and why do you believe that they will resonate with your constituents ?</p>
+                                            <p class="desc" style="overflow-x: scroll;">{{model1.questionnaire3}}</p>
+                                        </div>
+                                        <div class="form-group">
+                                            <p class="qus">4) What is your strategy for winning?</p>
+                                            <p class="desc" style="overflow-x: scroll;">{{model1.questionnaire4}}</p>
+                                        </div>
+                                    </div>
+                                </ng-template>
+                            </ngb-panel>
+                            <ngb-panel id="static-3" title="Campaign Technology">
+                                <ng-template ngbPanelContent>
+                                    <div class="form-container">
+
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="form-group row">
+                                                    <div class="col-md-12 technology">
+
+                                                        <label class="label">
+                                                            <input type="checkbox" class="" value="false" [readonly]="true"
+                                                                   [(ngModel)]="model1.technology_calls_5" name="technologyCalls5" disabled>5 Calls
+                                                            <span class="checkmark"></span>
+                                                        </label>
+                                                        <label class="label">
+                                                            <input type="checkbox" class="form-check-input" value="false"
+                                                                   [(ngModel)]="model1.technology_action_network" [readonly]="true"
+                                                                   name="technologyActionNetwork" disabled>Action Network
+                                                            <span class="checkmark"></span>
+                                                        </label>
+                                                        <label class="label">
+                                                            <input type="checkbox" class="form-check-input" value="false"
+                                                                   [(ngModel)]="model1.technology_ballot_ready" [readonly]="true"
+                                                                   name="technologyBallotReady" disabled>BallotReady
+                                                            <span class="checkmark"></span>
+                                                        </label>
+                                                        <label class="label">
+                                                            <input type="checkbox" class="form-check-input" value="false" [readonly]="true"
+                                                                   [(ngModel)]="model1.technology_countable" name="technology_countable" disabled>Countable
+                                                            <span class="checkmark"></span>
+                                                        </label>
+                                                        <label class="label">
+                                                            <input type="checkbox" class="form-check-input" value="false" [readonly]="true"
+                                                                   [(ngModel)]="model1.technology_flipgrid" name="technologyFlipgrid" disabled>FlipGrid
+                                                            <span class="checkmark"></span>
+                                                        </label>
+                                                        <label class="label">
+                                                            <input type="checkbox" class="form-check-input" value="false" [readonly]="true"
+                                                                   [(ngModel)]="model1.technology_ground_game" name="technologyGroundGame" disabled>GroundGame
+                                                            <span class="checkmark"></span>
+                                                        </label>
+                                                        <label class="label">
+                                                            <input type="checkbox" class="form-check-input" value="false" [readonly]="true"
+                                                                   [(ngModel)]="model1.technology_hustle" name="technologyHustle" disabled>Hustle
+                                                            <span class="checkmark"></span>
+                                                        </label>
+                                                        <label class="label">
+                                                            <input type="checkbox" class="form-check-input" value="false" [readonly]="true"
+                                                                   [(ngModel)]="model1.technology_mailchimp" name="technology_mailchimp" disabled>MailChimp
+                                                            <span class="checkmark"></span>
+                                                        </label>
+                                                        <label class="label">
+                                                            <input type="checkbox" class="form-check-input" value="false" [readonly]="true"
+                                                                   [(ngModel)]="model1.technology_mobilize_america"
+                                                                   name="technologyMobilizeAmerica" disabled>MobilizeAmerica
+                                                            <span class="checkmark"></span>
+                                                        </label>
+                                                        <label class="label">
+                                                            <input type="checkbox" class="form-check-input" value="false" [readonly]="true"
+                                                                   [(ngModel)]="model1.technology_relay" name="technologyRelay" disabled>Relay
+                                                            <span class="checkmark"></span>
+                                                        </label>
+                                                        <label class="label">
+                                                            <input type="checkbox" class="form-check-input" value="false" [readonly]="true"
+                                                                   [(ngModel)]="model1.technology_smart_shoot" name="technologySmartShoot" disabled>SmartShoot
+                                                            <span class="checkmark"></span>
+                                                        </label>
+                                                        <label class="label">
+                                                            <input type="checkbox" class="form-check-input" value="false" [readonly]="true"
+                                                                   [(ngModel)]="model1.technology_voter_circle"
+                                                                   name="technology_voter_circle" disabled>VoterCircle
+                                                            <span class="checkmark"></span>
+                                                        </label>
+                                                        <label class="label">
+                                                            <input type="checkbox" class="form-check-input"  value="" [readonly]="true"
+                                                            [(ngModel)]="model1.technology_others" name="technology_others" disabled>Others : {{model1.technology_others_description}}
+                                                            <span class="checkmark"></span>
+                                                        </label>
+                                                    </div>
+
+
+                                                </div>
+                                            </div>
+                                            <div class="col-md-8">
+                                                
+                                                <div class="form-group row">
+
+                                                    <div class="col-sm-6">
+                                                        <p class="review-sub-title">Campaign Website</p>
+                                                        <ng-container *ngIf="!model1.campaign_website"><p class="text-danger    ">Not applicable</p></ng-container>
+                                                        <ng-container *ngIf="model1.campaign_website">
+                                                            <a href="{{model1.campaign_website}}" class="btn custom-btn" target="_blank">{{model1.campaign_website}}</a>
+
+                                                        </ng-container>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <p class="review-sub-title">Campaign Facebook Page</p>
+                                                        <ng-container *ngIf="!model1.facebook_url"><p class="text-danger">Not applicable</p></ng-container>
+                                                        <ng-container *ngIf="model1.facebook_url"><a href="{{model1.facebook_url}}" class="btn custom-btn" target="_blank">{{model1.facebook_url}}</a></ng-container>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <p class="review-sub-title">Campaign Twitter Handle</p>
+                                                        <ng-container *ngIf="!model1.twitter_handle"><p class="text-danger">Not applicable</p></ng-container>
+                                                        <ng-container *ngIf="model1.twitter_handle">
+                                                            <a href="{{model1.twitter_handle}}" class="btn custom-btn" target="_blank">{{model1.twitter_handle}}</a>
+                                                        </ng-container>
+
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <p class="review-sub-title">Campaign Instagram Account</p>
+                                                        <ng-container *ngIf="!model1.instagram_account"><p class="text-danger">Not applicable</p></ng-container>
+                                                        <ng-container *ngIf="model1.instagram_account">
+                                                            <a href="{{model1.instagram_account}}" class="btn custom-btn" target="_blank">{{model1.instagram_account}}</a>
+                                                        </ng-container>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
+
+                                    </div>
+                                </ng-template>
+                            </ngb-panel>
+                            <ngb-panel id="static-4" title="District Demographic | Voter Contact Plan | Campaign Budget Summary">
+                                <ng-template ngbPanelContent>
+                                    <div class="form-container">
+                                        <div class="">
+                                            <div class="form-group review-sub-title">
+                                                <h4>District Demographics</h4>
+                                            </div>
+                                            <div class="form-group row desc">
+                                                <div class="col-sm-4">
+                                                    <p>Number of Voters</p>
+                                                    <p>{{model1.district_population | number}}</p>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <p>Democratic Performance Indicator</p>
+                                                    <p>{{model1.district_dpi}}</p>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <p>Number of Votes Required to Win</p>
+                                                    <p>{{model1.district_registered_voters | number}}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <br/>
+                                        <div class="form-group review-sub-title">
+                                            <h4>Voter Engagement Targets</h4>
+                                        </div>
+                                        <div class="form-group row desc">
+                                            <div class="col-sm-4">
+                                                <p>Canvassing</p>
+                                                <p>{{model1.voter_engage_canvas | number}}</p>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <p>Digital</p>
+                                                <p>{{model1.voter_engage_digital | number}}</p>
+                                            </div>
+                                        </div>
+                                        <!-- <div class="form-group row desc">
+                                            <div class="col-sm-4">
+                                                <p>Weekly Number of Phone Calls</p>
+                                                <p>1,200</p>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <p>Weekly Number of Doors Knocked</p>
+                                                <p>4,500</p>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <p>Weekly Number of Events</p>
+                                                <p>10</p>
+                                            </div>
+                                        </div> -->
+                                        <br/>
+                                        <div class="form-group review-sub-title">
+                                            <h4>Campaign Budget Summary</h4>
+                                        </div>
+                                        <div class="form-group row desc">
+                                            <div class="col-sm-4">
+                                                <p>Starting Budget</p>
+                                                <p>{{model1.total_budget | number}}</p>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <p>Digital Tools Budget</p>
+                                                <p>{{model1.digital_budget | number}}</p>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <p>Other Voter Outreach Budget</p>
+                                                <p>{{model1.canvassing_budget | number}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </ng-template>
+                            </ngb-panel>
+                            <ngb-panel id="static-5" title="State Campaign Collaboration Information">
+                                <ng-template ngbPanelContent>
+                                    <div class="form-container">
+                                        <div class="form-group row ">
+                                            <div class="col-sm-12 table-responsive">
+                                                    <table class="table">
+                                                        <thead>
+                                                        <tr>
+                                                            <th>#</th>
+                                                            <th>Candidate</th>
+                                                            <th>Email</th>
+                                                            <th>Phone</th>
+                                                            <th>Office</th>
+                                                            <th>House</th>
+                                                            <th>Incumbent</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        <tr *ngFor="let candidate of model1.state_candidates; let rowNum = index;">
+                                                            <td>{{rowNum+1}}</td>
+                                                            <td>{{candidate.state_candidate_name}}</td>
+                                                            <td>{{candidate.state_candidate_email}}</td>
+                                                            <td>{{candidate.state_candidate_phone}}</td>
+                                                            <td>{{candidate.state_candidate_state}}</td>
+                                                            <td>{{candidate.state_candidate_house}}</td>
+                                                            <td>{{candidate.incumbent}}</td>
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </ng-template>
+                            </ngb-panel>
+                        </ngb-accordion>
+                        <!-- <div class="text-right">
+                            <button type="button" (click)="location.back();" class="btn custom-btn">Go Back</button>
+
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>

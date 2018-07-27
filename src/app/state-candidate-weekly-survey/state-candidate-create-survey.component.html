@@ -1,0 +1,71 @@
+
+<div class="container">
+        <app-header></app-header>
+    </div>
+    <div class="wrapper">
+    <div class="container">
+        <div class="page-wraper">
+            <div class="investor-home-header">
+                <button type="button" class="btn btn-outline-secondary mr-2" >
+                    <a routerLink="/state-candidate-home">Contact & Payment Information</a>
+                </button>
+                <button type="button" class="btn btn-outline-secondary mr-2 active">
+                    <a routerLink="/state-candidate-weekly-survey">Submit Bi-Weekly Survey</a>
+                </button>
+                <button type="button" class="btn btn-outline-secondary mr-2">
+                    <a routerLink="/state-candidate-past-survey">Review Past Survey</a>
+                </button>
+                <button type="button" class="btn btn-outline-secondary mr-2">
+                    <a routerLink="/state-candidate-events">View Event Links</a>
+                </button>
+            </div>
+            <div class="form-container">
+                <div class="form-group row">
+                    <div class="col-sm-12">
+                        <div class="page-header"><h2 class="text-white">Create New Survey</h2></div>
+                    </div>
+                </div>
+                <form #surveyFrm="ngForm" autocomplete="on" >
+                    <div class="form-group row">
+
+                        <div class="col-sm-3">
+                            <label>Select Campaign:</label>
+                            <select class="form-control" id="campaign" name="candidate_id"
+                                    [(ngModel)]="survey.candidate_id" required>
+                                <option *ngFor="let candidate of campaigns" value="{{candidate.id}}">{{candidate.name}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-6">
+                            <label>Number of Events Attended with Congressional Candidate: </label>
+                        </div>
+                        <div class="col-sm-2">
+                            <input class="form-control" type="text" placeholder="4" name="attended_events"
+                                   [(ngModel)]="survey.attended_events">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-6">
+                            <label>how well did congressional candidate collaborate with you campaign? </label>
+                            <p class="text-color">(Canvassing, literature, mailings, etc.)</p>
+                        </div>
+                        <div class="col-sm-2">
+                            <input class="form-control" type="text" placeholder="5" name="rating"
+                                   [(ngModel)]="survey.rating">
+                        </div>
+                    </div>
+                    <div class="form-group text-right">
+                        <button type="button" (click)="locationSer.back();" class="btn custom-btn"> Cancel </button>
+                        <button type="button" class="btn custom-btn" [disabled]="!surveyFrm.form.valid" (click)="createNewSurvey()">Create Event</button>
+                        <div [hidden]="surveyFrm.valid || surveyFrm.pristine" class="text-danger">
+                            Please fill all the required fields.
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+<app-footer></app-footer>

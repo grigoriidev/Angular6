@@ -1,0 +1,11 @@
+.btn-outline-secondary{
+    background: #3593c7;
+    margin:5px 3px;
+}
+.btn-outline-secondary a{
+    color: #ffffff;
+    font-size: 13px;
+}
+.btn-outline-secondary .active{
+    color: #ffeb3b;
+}

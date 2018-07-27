@@ -1,0 +1,36 @@
+.content-wraper{
+    width: 70%;
+    margin-left: 15%;
+    margin-top: 2%;
+}
+.other-tools{
+    border: 1px solid;
+    border-radius: 2px;
+    padding: 2px;
+}
+.review-sub-title{
+    color: #ffffff;text-decoration: underline;
+}
+.desc{
+    margin: 15px;
+    color: #ffffff;
+}
+.technology .label{
+    width: 50%;
+    display: inline-block;
+    text-align: left;
+}
+
+.card{
+    padding: 10px 20px;
+    margin: 2% auto;
+    min-height: 300px;
+    background: rgba(0,0,0,0.1);
+}
+.qus{
+    color: #ffffff;
+}
+
+.technology .label input:checked ~ .checkmark {
+    background-color: #4ab2d0;
+}

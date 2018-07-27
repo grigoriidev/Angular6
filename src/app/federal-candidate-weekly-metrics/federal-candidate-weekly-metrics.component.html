@@ -1,0 +1,82 @@
+<div class="container">
+        <app-header></app-header>
+    </div>
+<div class="wrapper">
+    <div class="container">
+        <div class="page-wraper">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="page-header"><h3>Federal Candidate Manage Events</h3></div>
+                    <app-federal-candidate-header></app-federal-candidate-header>
+                    <div class="form-container">
+                        <div class=" row">
+                            <div class="col-md-6">
+                                <h3 class="section-header">Active Measurement Period</h3>
+                            </div>
+                            <div class="col-sm-6 text-right">
+                                <a *ngIf="activePeriod.canCreateNewMetrics" routerLink="/federal-candidate-create-metrics/{{activePeriod.id}}" class="btn custom-btn">Create Metrics</a>
+                                <a routerLink="/federal-candidate-create-event/{{activePeriod.id}}" class="btn custom-btn">Create Event</a>
+                            </div>
+                        </div>
+                        <div class=" table-responsive card">
+                            <table class="table ">
+                                <thead>
+                                <tr >
+                                    <th>#</th>
+                                    <th>Start Date</th>
+                                    <th>End Date</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr *ngFor="let row of activePeriods; let rowNumber = index;">
+                                    <td>{{rowNumber+1}}</td>
+                                    <td>{{row.start_date | date:"d/M/y h:mm:ss a"}}</td>
+                                    <td>{{row.end_date | date:"d/M/y h:mm:ss a"}}</td>
+                                    <td>{{row.status}}</td>
+                                    <td>
+                                        <a routerLink="/view-weekly-metrics/{{row.id}}">View Metrics</a>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="form-container">
+                        <div class=" row">
+                            <div class="col-md-12">
+                                <h3 class="section-header">Past Measurement Periods</h3>
+                            </div>
+                        </div>
+                        <div class=" table-responsive card">
+                            <table class="table ">
+                                <thead>
+                                <tr >
+                                    <th>#</th>
+                                    <th>Start Date</th>
+                                    <th>End Date</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr *ngFor="let row of inactivePeriods; let rowNumber = index;">
+                                    <td>{{rowNumber+1}}</td>
+                                    <td>{{row.start_date | date:"d/M/y h:mm:ss a"}}</td>
+                                    <td>{{row.end_date | date:"d/M/y h:mm:ss a"}}</td>
+                                    <td>{{row.status}}</td>
+                                    <td>
+                                        <a routerLink="/view-weekly-metrics/{{metric.id}}">View Metrics</a>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>

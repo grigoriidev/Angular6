@@ -1,0 +1,27 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="investor-home-header">
+      <button type="button" class="btn btn-outline-secondary mr-2" *ngIf="getPermissionStatus('federalCandidateContact');">
+        <a routerLink="/federal-candidate-home" routerLinkActive="active">Account & Payment Information</a>
+      </button>
+      <button type="button" class="btn btn-outline-secondary mr-2" *ngIf="getPermissionStatus('federalCandidateWeeklySurvey');">
+        <a routerLink="/federal-candidate-weekly-metrics" routerLinkActive="active">Enter Bi-Weekly Metrics</a>
+      </button>
+      <button type="button" class="btn btn-outline-secondary mr-2" *ngIf="getPermissionStatus('federalCandidateEnterPastSurvey');">
+        <a routerLink="/federal-candidate-past-metrics" routerLinkActive="active">Review Past Metrics</a>
+      </button>
+      <button type="button" class="btn btn-outline-secondary mr-2" *ngIf="getPermissionStatus('federalCandidateScoreboard');">
+        <a routerLink="/federal-candidate-scorecard" routerLinkActive="active">Campaign Scorecard</a>
+      </button>
+      <button type="button" class="btn btn-outline-secondary mr-2" *ngIf="getPermissionStatus('federalCandidateReports');">
+        <a routerLink="/federal-candidate-report" routerLinkActive="active">Contribution Reports</a>
+      </button>
+      <button type="button" class="btn btn-outline-secondary mr-2" *ngIf="getPermissionStatus('federalCandidateManageInvitations');">
+        <a routerLink="/manage-invitations/2" routerLinkActive="active">Manage Invitations</a>
+      </button>
+      <!-- <button type="button" class="btn btn-outline-secondary mr-2" *ngIf="getPermissionStatus('federalCandidateSettings');">
+        <a routerLink="/settings">Settings</a>
+      </button> -->
+    </div>
+  </div>
+</div>

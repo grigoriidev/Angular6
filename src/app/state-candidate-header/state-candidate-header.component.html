@@ -1,0 +1,20 @@
+<div class="investor-home-header">
+  <button type="button" class="btn btn-outline-secondary mr-2 active" *ngIf="getPermissionStatus('stateCandidateContact');">
+    <a routerLink="/state-candidate-home" routerLinkActive="active">Account & Payment Information</a>
+  </button>
+  <button type="button" class="btn btn-outline-secondary mr-2" *ngIf="getPermissionStatus('stateCandidateWeeklySurvey');">
+    <a routerLink="/state-candidate-weekly-survey" routerLinkActive="active">Submit  Bi-Weekly Survey</a>
+  </button>
+  <button type="button" class="btn btn-outline-secondary mr-2" *ngIf="getPermissionStatus('stateCandidateEnterPastSurvey');">
+    <a routerLink="/state-candidate-past-survey" routerLinkActive="active">Review Past Survey</a>
+  </button>
+  <button type="button" class="btn btn-outline-secondary mr-2" *ngIf="getPermissionStatus('stateCandidateViewEventLinks');">
+    <a routerLink="/state-candidate-events" routerLinkActive="active">View Events Links</a>
+  </button>
+  <button type="button" class="btn btn-outline-secondary mr-2" *ngIf="getPermissionStatus('stateCandidateManageInvitations');">
+    <a routerLink="/manage-invitations/2" routerLinkActive="active">Manage Invitations</a>
+  </button>
+  <!-- <button type="button" class="btn btn-outline-secondary mr-2" *ngIf="getPermissionStatus('stateCandidateSettings');">
+    <a routerLink="/settings">Settings</a>
+  </button> -->
+</div>

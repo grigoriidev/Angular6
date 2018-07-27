@@ -1,0 +1,148 @@
+
+<div class="wrapper">
+    <div class="text-center">
+       <h3><img src="../../assets/images/logo.png" width="100px"><span>RunTogether</span></h3>
+    </div>
+    <div class="login">
+        <div class="row ">
+            <div class="col-md-12">
+                <!--<h2 class="text-color text-center">RunTogether Signin Form</h2>-->
+
+                <div class="frm-wraper">
+                    <div class="row">
+                        <div class="col-sm-12"  *ngIf="formPage == 1">
+                            <div class="review-title">
+                                <h3 class="text-white"> sign in</h3>
+                            </div>
+                            <form #loginFrm="ngForm" autocomplete="on" ngNativeValidate>
+
+                                <div class="form-group">
+                                    <label class="form-check-label">Email </label>
+                                    <input class="form-control" type="email" placeholder="user@gmail.com"
+                                           [(ngModel)]='User.username' name="username" #username="ngModel" maxlength="50" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required >
+                                    <!-- <div [hidden]="username.valid || username.pristine" class="text-danger">
+                                    User Name is required.
+                                    </div> -->
+                                    <div *ngIf="username.invalid && (username.dirty || username.touched)"
+                                         class="text-danger">
+                                        <div *ngIf="username.errors.required">
+                                            Email is required.
+                                        </div>
+                                        <div *ngIf="username.errors.pattern">
+                                            Enter a valid email address.
+                                        </div>
+                                        <!-- <div *ngIf="name.errors.maxlength">
+                                            Username should not exceed 50 characters.
+                                        </div> -->
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-check-label">Password </label>
+                                    <input class="form-control" type="password" placeholder="Password"
+                                           [(ngModel)]='User.userpwd' name="userpwd" #userpwd="ngModel" required>
+                                    <div *ngIf="userpwd.invalid && (userpwd.dirty || userpwd.touched)"
+                                         class="text-danger">
+                                        <div *ngIf="userpwd.errors.required">
+                                            Password is required.
+                                        </div>
+                                        <!-- <div *ngIf="userpwd.errors.minlength">
+                                            Password must be at least 6 characters long.
+                                        </div> -->
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-12 text-right">
+                                        <a href="javascript:void(0)" (click)="showForgotPwdForm()" class="text-white ">Forgot password ?</a>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="text-center">
+                                            <button type="submit" class="btn custom-btn" [disabled]="!loginFrm.form.valid"
+                                                    (click)='Login()'>Login</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                        <!-- 2FA Authentication -->
+                    <div class="row"  *ngIf="formPage == 2">
+                        <div class="col-sm-12" >
+                            <div class="form-group review-title">
+                                <h3 class="text-white">Reset Your Password</h3>
+                            </div>
+                            <form>
+                                <div class="form-group" >
+                                    <div class="form-check-inline">
+                                        <label class="form-check-label">Enter Your Registered Email: </label>
+                                        <input class="form-control" type="text" placeholder="Email" #registeredemail="ngModel"
+                                               [(ngModel)]='forgotUser.registered_email' name="registeredemail" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required email>
+                                        <div *ngIf="registeredemail.invalid && (registeredemail.dirty || registeredemail.touched)" class="text-danger">
+                                            <div *ngIf="registeredemail.errors.required">
+                                                Email is required.
+                                            </div>
+                                            <div *ngIf="registeredemail.errors.email">
+                                                Enter a valid email address.
+                                            </div>
+                                            <div *ngIf="registeredemail.errors.maxlength">
+                                                Email should not exceed 50 characters.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="text-right">
+                                            <button type="button" class="btn custom-btn" (click)='cancelLogin()'>Cancel</button>
+                                            <button type="button" class="btn custom-btn" (click)='resetUserPassword()' [disabled]="registeredemail.invalid">Reset Password</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                    <!--sadasdasds-->
+                    <div class="row" *ngIf="formPage == 3">
+                        <div class="col-sm-12" >
+                            <div class="form-group review-title">
+                                <h3 class="text-white">Enter Verification Code</h3>
+                                <label class="form-check-label" style="text-transform: none;font-size: 16px;">
+                                    Please enter security code texted to {{otpMobileNumber}} to verify account ownership.
+                                </label>
+                            </div>
+                            <form>
+                                <div class="form-group" >
+                                    <div class="form-check-inline">
+                                        <input class="form-control" type="text" placeholder="OTP" #oCode="ngModel"
+                                               [(ngModel)]='otpCode' name="oCode" required>
+                                        <div *ngIf="oCode.invalid && (oCode.dirty || oCode.touched)" class="text-danger">
+                                            <div *ngIf="oCode && oCode.errors.required">
+                                                Otp Code is required.
+                                            </div>
+                                        </div>
+                                        <div *ngIf = "resendOtpCount < 5" style="color: white;">
+                                            <a  style="color: white;cursor:pointer;" (click)="resendOTPToUser(userLoginData.data.id)">Resend OTP to {{otpMobileNumber}}</a>
+                                            <a href="mailto:techsupport@windem.org" style="color: white;float: right;cursor:pointer;" >Report a problem</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="text-right">
+                                            <button type="button" class="btn custom-btn" (click)='cancelLogin()'>Cancel</button>
+                                            <button type="button" class="btn custom-btn" (click)='VerifyOtp()' [disabled]="oCode.invalid">Verify</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<app-footer></app-footer>

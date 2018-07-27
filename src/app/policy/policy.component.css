@@ -1,0 +1,30 @@
+.wrapper{
+    /*margin: 2% auto;*/
+}
+ul{
+    list-style: square outside url("../../assets/images/images.png");
+}
+ul li{
+    color: #ffffff;
+    margin: 10px auto;
+}
+p{
+    margin-bottom: 2%;
+}
+b{
+    color: #FF9800;
+}
+h3{
+    margin: 5%;
+}
+h4 span{
+    color: #ffffff;
+    font-size: 28px;
+    border: 1px solid #fff;
+    padding: 5px 6px;
+    width: 40px;
+    border-radius: 50%;
+    height: 40px;
+    margin: 4px;
+    cursor: pointer;
+}

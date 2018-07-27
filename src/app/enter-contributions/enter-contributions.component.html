@@ -1,0 +1,67 @@
+<div class="container">
+    <app-header></app-header>
+</div>
+<div class="wrapper">
+    <div class="container">
+        <div class="page-wraper">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="page-header"><h3>Enter Contributions</h3></div>
+
+                </div>
+            </div>
+            <div class="row">
+
+                <div class="col-md-12">
+                    <div class="section">
+                        <div class=" table-responsive">
+                            <div class="col-md-12" style=" display: inline-block; margin-bottom: 20px; ">
+                                <div class="col-md-1" style=" font-size: 15px; color: white; line-height: 34px; ">
+                                    <span>Period :-</span>
+                                </div>
+                                <div class="col-md-4">
+                                    <select class="form-control" [(ngModel)]  = "selectedTranch" (ngModelChange) = "getCurrentUnApprovedPledges(selectedTranch)">
+                                        <option *ngFor="let tranch of tranches" value = {{tranch.period}}>Tranch {{tranch.period}}</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-7"></div>
+                            </div>
+                            <table class="table table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Contributor</th>
+                                    <th>Total Pledged</th>
+                                    <th>Total Paid</th>
+                                    <th>This Tranche contribution</th>
+                                    <th>This Tranche Payment</th>
+                                    <th>Unallocatable Payment</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr *ngFor="let pledge of pledges">
+                                    <td class="border-right">{{pledge.user_firstname}} {{pledge.user_lastname}}</td>
+                                    <td>{{pledge.total_pledged | currency}}</td>
+                                    <td>{{pledge.total_paid | currency}}</td>
+                                    <td>{{pledge.pledged_amt | currency}}</td>
+                                    <td>
+                                        <input *ngIf="!checkIsPaid(pledge)" class="form-control" (keypress)="numberOnly($event)" [(ngModel)] = "pledge.actual_amt" />
+
+                                        <span *ngIf="checkIsPaid(pledge)">{{pledge.actual_amt | currency}}</span>
+                                    </td>
+                                    <td>{{getUnAllocatedPayment(pledge) | currency}}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <p class="text-right">
+                                <button class="btn btn-default" (click)="enterContributions()">Submit </button>
+                            </p>
+                            <!--<pagination-controls (pageChange)="p = $event" class="pull-right"></pagination-controls>-->
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>

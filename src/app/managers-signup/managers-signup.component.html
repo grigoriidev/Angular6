@@ -1,0 +1,117 @@
+<div class="page-header"><h2> {{pageTitle}} Sign-Up</h2></div>
+    <br />
+    <div class="page-header"><h5>Contact & Account Information</h5></div>
+    <br />
+    <div class="frm-wraper">
+      <form #investorSignup="ngForm" ngNativeValidate>
+          <div class="form-group row">
+              <div class="col-sm-12">
+                <label>User Name & Address</label>
+              </div>
+            </div>
+          <div class="form-group row">
+            <!-- <div class="col-sm-1">
+              <input class="form-control" type="text" placeholder="Prefix" name="prefix" [(ngModel)]="Investor.prefix">
+            </div> -->
+            <div class="col-sm-4">
+              <input class="form-control" type="text" placeholder="First" name="first_name" [(ngModel)]="Investor.first_name" required>
+            </div>
+            <div class="col-sm-4">
+              <input class="form-control" type="text" placeholder="Middle" name="middle_name" 
+              [(ngModel)]="Investor.middle_name">
+            </div>
+            <div class="col-sm-4">
+              <input class="form-control" type="text" placeholder="Last" name="last_name" [(ngModel)]="Investor.last_name" required>
+            </div>
+            <!-- <div class="col-sm-2">
+              <input class="form-control" type="text" placeholder="Suffix" name="suffix" [(ngModel)]="Investor.suffix">
+            </div> -->
+          </div>
+          <!-- <div class="form-group row">
+            <div class="col-sm-4">
+              <input class="form-control" type="text" placeholder="Street Address" name="street" [(ngModel)]="Investor.street" required>
+            </div>
+            <div class="col-sm-2">
+              <input class="form-control" type="text" placeholder="Address Line2" name="address" [(ngModel)]="Investor.address" required>
+            </div>
+            <div class="col-sm-2">
+              <input class="form-control" type="text" placeholder="City" name="city" [(ngModel)]="Investor.city" required>
+            </div>
+            <div class="col-sm-2">
+                <select class="form-control" id="state" name="state" 
+                [(ngModel)]="Investor.state" required>
+                  <option>Select State</option>
+                  <option value="Alabama">Alabama</option>
+                  <option value="Alaska">Alaska</option>
+                  <option value="California">California</option>
+                </select>
+            </div>
+            <div class="col-sm-2">
+              <input class="form-control" type="text" placeholder="Postal Code" name="postal_code" [(ngModel)]="Investor.postal_code" required>
+            </div>
+          </div> -->
+          <div class="form-group row">
+            <div class="col-sm-6">
+              <input class="form-control" type="email" placeholder="Email Address" name="email" [(ngModel)]="Investor.email" [disabled]=true pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required>
+            </div>
+            <!--<div class="col-sm-4">
+              <input class="form-control" type="text" placeholder="Confirm Email Address" name="email" [(ngModel)]="Investor.email" [disabled]=true>
+            </div> -->
+            <div class="col-sm-6">
+              <!--<input class="form-control" type="tel" placeholder="Phone (xxx-xxx-xxxx) *" pattern="^\d{3}-\d{3}-\d{4}$" required>-->
+                <input class="form-control" type="tel" [textMask]="{mask: mask}"
+                        placeholder="Phone(__) __-____*" minlength="14"  required>
+
+
+                <div *ngIf="phone_error" class="text-danger">
+                    Phone number is incomplete
+                </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-sm-6">
+              <div class="input-group">
+                  <input class="form-control" type="{{inputType}}" placeholder="Password *"
+                  [(ngModel)]="Investor.password" name="password" #password="ngModel"
+                         (ngModelChange)="pwdMatchValidator()"
+                  pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,}$" title="Must contain at least a number, a uppercase, a lowercase and a special character, and at least 6 or more characters" required>
+                  <div class="input-group-btn">
+                      <button class="btn btn-default" type="button" (click)="changeType()">
+                        <i class="glyphicon glyphicon-eye-open"></i>
+                      </button>
+               </div>
+              </div>
+              <div *ngIf="password.errors && (password.dirty || password.touched)" class="text-danger">
+                <div [hidden]="!password.errors.required">
+                      Password is required!
+                 </div>
+                   <div [hidden]="!password.errors.pattern">
+                       Must contain at least a number, a uppercase, a lowercase and a special character, and at least 6 or more characters
+                   </div>
+            </div>
+              </div>
+            <div class="col-sm-6">
+              <div class="input-group">
+                  <input class="form-control" type="{{inputType}}" placeholder="Confirm Password *"
+                  [(ngModel)]="Investor.password1" name="password1" #password1="ngModel"   (ngModelChange)="pwdMatchValidator()"
+                  required>
+                  <div class="input-group-btn">
+                      <button class="btn btn-default" type="button" (click)="changeType()" >
+                        <i class="glyphicon glyphicon-eye-open"></i>
+                      </button>
+               </div>
+                  
+              </div>
+              <div *ngIf="mismacth" class="text-danger">
+                Password Doesn't Match!
+             </div>
+            </div>
+          </div>
+      </form>
+      <div class="form-group">
+          <button type="button" [disabled]="!investorSignup.form.valid || mismacth" (click)="signupUser()">Signup</button>
+          <div [hidden]="investorSignup.valid || investorSignup.pristine " class="text-danger">
+            Please fill all the required fields.
+          </div> 
+      </div>
+    </div>

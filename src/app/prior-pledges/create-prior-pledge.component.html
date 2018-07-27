@@ -1,0 +1,66 @@
+<div class="wrapper">
+    <div class="container">
+        <app-header></app-header>
+
+        <div class="page-wraper">
+            <div class="page-header"><h4>{{pageTitle}} Prior Contribution</h4></div>
+
+            <div class="form-container">
+
+                <form #pledgeFrm="ngForm" autocomplete="off" >
+                    <div class="form-group row">
+                        <div class="col-sm-2"><label>Select Campaign:</label></div>
+                        <div class="col-sm-3">
+                            <select class="form-control" id="campaign" name="candidate_id"
+                                    [(ngModel)]="pledge.candidate_id" required>
+                                <option *ngFor="let candidate of campaigns" value="{{candidate.id}}">{{candidate.name}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-2">
+                            <label>Amount (Maximum allowed is $2,700.00): </label>
+                        </div>
+                        <div class="col-sm-3 " >
+                            <div class="input-group">
+                                    <!--<span class="input-group-addon">$</span>-->
+                                    <input class="form-control" placeholder="$2,700.00"  type="tel"
+                                    name="attended_events" currencyMask [(ngModel)]="pledge.amount" min="1" max="2700" required>
+                                <ng-container *ngIf="pledge.amount > 2700">
+                                    <span class="input-group-addon" (click)="refresh()"><i class="glyphicon glyphicon-refresh"></i> </span>
+                                </ng-container>
+                            </div>
+                            <p class="text-danger text-left" *ngIf="pledge.amount > 2700">Maximum allowed amount is $2,700.00</p>
+
+                        </div>
+                        <!--<div class="col-sm-7">
+
+
+                        </div>-->
+
+                    </div>
+                    <!-- <div class="form-group row">
+                            <div class="col-sm-2">
+                                <label>Date :</label>
+                            </div>
+                            <div class="col-md-3">
+                                    <my-date-picker name="event_datetime" [options]="myDatePickerOptions" required></my-date-picker>
+        
+                            </div>
+                    </div> -->
+                    <div [hidden]="pledgeFrm.valid || pledgeFrm.pristine" class="text-danger text-center">
+                       <h4 [hidden]="pledge.amount > 2700"> Please fill all the required fields.</h4>
+                    </div>
+                    <div class="form-group text-right">
+                        <button type="button" (click)="locationSer.back();" class="btn custom-btn"> Cancel </button>
+                        <button type="button" class="btn custom-btn" [disabled]="!pledgeFrm.form.valid "
+                                (click)="createNewPledge()" >submit</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+<app-footer></app-footer>

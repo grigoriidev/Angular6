@@ -1,0 +1,43 @@
+<div class="container">
+        <app-header></app-header>
+    </div>
+<div class="wrapper">
+    <div class="container">
+    <div class="page-wraper">
+       <div class="row">
+           <div class="col-md-12">
+               <div class="page-header"><h3>Manage User Access</h3></div>
+
+           </div>
+       </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section">
+                    <div class=" table-responsive">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Roles</th>
+                                <th>Manage</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr *ngFor="let role of Roles  | paginate: { itemsPerPage: 10, currentPage: p };let i=index">
+                                <td class="border-right">{{role.id}}</td>
+                                <td>{{role.name}}</td>
+                                <td class="manage-icon"><a href="{{this.url+role.id}}"> <i class="fa fa-edit"></i> </a></td>
+                            </tr>
+                            <tr *ngIf="recordCount == 0" ><td colspan="10">No record found. Please use the  filters to refine your search.</td></tr>
+                            </tbody>
+                        </table>
+                        <!--<pagination-controls (pageChange)="p = $event" class="pull-right"></pagination-controls>-->
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    </div>
+</div>
+<app-footer></app-footer>

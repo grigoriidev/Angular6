@@ -1,0 +1,33 @@
+
+.login{
+    margin: 3vh auto;
+
+}
+.frm-wraper{
+    box-shadow: 0 0 15px -5px #49b3d0;
+    max-width: 500px;
+    margin: auto;
+    border-radius: 10px;
+    border: 1px solid #47aecf;
+    background: #165db7;
+    background: linear-gradient(to right , #165db7, #4cb6d0);
+}
+.review-title{
+    /*padding:5% 0 0 ;*/
+    text-transform: uppercase;
+    text-align: center;
+
+}
+form{
+    padding:5% 10%;
+}
+.form-control{
+    border: 1px solid;
+}
+label{
+    color: #ffffff;
+}
+.wrapper{
+    margin: 2% auto;
+   padding:1% 5% ;
+}

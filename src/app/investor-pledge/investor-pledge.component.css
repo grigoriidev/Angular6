@@ -1,0 +1,25 @@
+.text-primary{
+    color: #93ddf0;
+}
+.page-header{
+    margin: 15px;
+}
+.form-container .pledge-field .form-control{
+    width: 40%;
+    margin: 0 10px;
+    display: inline-block;
+}
+.form-container .input-group .form-control{
+    margin:auto;
+    padding: 7px 0
+}
+.input-group-addon{
+    background-color: #fff;
+    border: 1px solid #fff;
+    color: #3593c7;
+    padding: 7px 0 7px 10px;
+
+}
+.form{
+    max-width: 780px;
+}

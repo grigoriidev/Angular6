@@ -1,0 +1,14 @@
+.item-row{
+    border: 1px solid;
+    margin-bottom: 10px;
+    background: #ffffff;
+}
+.bg-grey1{
+    background: #b8b8b8 !important;
+}
+.bg-grey2{
+    background: #737272 !important;
+}
+.review-sub-title{
+    margin: 10px;
+}

@@ -1,0 +1,87 @@
+
+<div class="container">
+        <app-header></app-header>
+    </div>
+<div class="wrapper">
+   <div class="container">
+       <div class="page-wraper">
+
+           <div class="row">
+               <div class="col-md-12">
+
+                   <ng-container *ngIf="userRole === '1'">
+                       <app-blue-angels-header></app-blue-angels-header>
+
+                       <div class="row">
+                           <div class="col-md-8">
+                               <!-- <div class="page-header"><h4>Manage Invitations</h4></div> -->
+                           </div>
+                           <div class="col-md-4 text-right">
+                               <a routerLink="{{invitationUrl}}" class="btn custom-btn">Create Invitation</a>
+                           </div>
+                       </div>
+                   </ng-container>
+                   <ng-container *ngIf="userRole === '2'">
+
+                       <div class="row">
+                           <div class="col-md-9">
+                               <app-investor-header></app-investor-header>
+                               <!--<div class="page-header"><h4>Manage Invitations</h4></div> -->
+                           </div>
+                           <div class="col-md-3 ">
+                               <a routerLink="{{invitationUrl}}" class="btn custom-btn">Create Invitation</a>
+                           </div>
+                       </div>
+                   </ng-container>
+                   <ng-container *ngIf="userRole === '5'">
+                       <div class="row">
+                           <div class="col-md-8">
+                               <!--<div class="page-header"><h3>Manage Invitations</h3></div>-->
+                               <div class="page-header"><h3>Manage Invitations</h3></div>
+                           </div>
+                           <div class="col-md-4 text-right">
+                               <a routerLink="{{invitationUrl}}" class="btn custom-btn">Create Invitation</a>
+                           </div>
+                       </div>
+
+                   </ng-container>
+
+                   <div class="section">
+                       <div>
+
+                           <div class=" table-responsive">
+                               <table class="table">
+                                   <thead>
+                                   <tr>
+                                       <!-- <th>ID</th> -->
+                                       <th>Name</th>
+                                       <th>Email</th>
+                                       <th>Invited Role</th>
+                                       <th>Status</th>
+                                   </tr>
+                                   </thead>
+                                   <tbody>
+                                   <tr *ngFor="let windem of windemInvitations | orderBy: order : true :false  | paginate: { itemsPerPage: 10, currentPage: p };let i=index">
+                                       <!-- <td class=" border-right">{{windem.user_id}}</td> -->
+                                       <td>{{windem.name}}</td>
+                                       <td >{{windem.username}}</td>
+                                       <td >{{windem.invites_to}}</td>
+                                       <td *ngIf="!needToShowReactivation(windem.token_expiration, windem.status)">{{windem.status}}</td>
+                                       <td *ngIf="needToShowReactivation(windem.token_expiration, windem.status)"> Expired
+                                           <span > <a  href="javascript:void(0)"
+                                                       (click)="reSendInvitation(windem.user_id, windem.username, windem.name, windem.invites_to)">( Re-invite User )</a> </span>
+                                       </td>
+                                   </tr>
+                                   <tr *ngIf="recordCount == 0"><td colspan="10"><p class="text-center">No record found. Please use the  filters to refine your search.</p></td></tr>
+                                   </tbody>
+                               </table>
+                               <pagination-controls (pageChange)="p = $event" class="pull-right"></pagination-controls>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+           </div>
+       </div>
+   </div>
+</div>
+<app-footer></app-footer>

@@ -1,0 +1,17 @@
+<ul class="nav navbar-nav">
+  <li class="active"><a routerLink="/signin">signin</a></li>
+  <li class="active"><a routerLink="/signup">signup</a></li>
+  <li class="active"><a routerLink="/permission-allotment">Permission Allotment</a></li>
+  <li class="active"><a routerLink="/blue-angels-contact">Blue Angel Home</a></li>
+  <li class="active"><a routerLink="/settings">Settings</a></li>
+  <li *ngIf="getPermissionStatus('blueanglesContactPaymentInformation');"><a routerLink="/review-candidate" >review-candidate</a></li>
+  <li *ngIf="getPermissionStatus('blueanglesBiWeeklyContributionConfirmation');"><a routerLink="/weekly-metrics" >weekly-metrics</a></li>
+  <li *ngIf="getPermissionStatus('investorContactPaymentInformation');"><a routerLink="/pledge">investor-pledge</a></li>
+  <li *ngIf="getPermissionStatus('investorBi-weeklyContributionConfirmation');"><a routerLink="/investor-signup" >investor-signup</a></li>
+  <li *ngIf="getPermissionStatus('investorCampaignScoreboard');"><a routerLink="/investor-contact" >investor-home</a></li>
+  <li (click)="logoutUser()"><a href="javascript:void(0);"><i class="fa fa-sign-out"></i>logout</a></li>
+  <li class="active"><a routerLink="/state-candidate-home">State Candidate Home</a></li>
+  <li class="active"><a routerLink="/federal-candidate-home">Federal Candidate Home</a></li>
+  <li class="active"><a routerLink="/windem-home/2">Admin Invite</a></li>
+
+</ul>

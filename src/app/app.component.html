@@ -1,0 +1,21 @@
+<!--
+<div class="wrapper">
+  <app-header></app-header>
+  <div class="container">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+<footer>
+  <div class="text-right">
+    <p>&copy; WINDEM ALL RIGHTS RESERVED</p>
+  </div>
+</footer>-->
+<a [routerLink]="['/']" *ngIf="isLoggedIn" >
+    <div style="float: left;">
+        <img src="../../assets/images/logo.png" style="width: 55px;">
+        <span style="font-size: 20px;color: white;vertical-align: middle;">
+            RunTogether
+        </span>
+    </div>
+</a>
+<router-outlet></router-outlet>

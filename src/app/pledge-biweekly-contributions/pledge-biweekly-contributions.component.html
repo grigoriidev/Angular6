@@ -1,0 +1,124 @@
+<div class="container">
+    <app-header></app-header>
+</div>
+<div class="wrapper">
+
+    <div class="container">
+
+        <div class="page-wraper">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="page-header"><h3>RunTogether Blue Angel Home</h3></div>
+                    <app-blue-angels-header></app-blue-angels-header>
+                    <div class="form-container">
+
+                        <form #changePasswordForm="ngForm" ngNativeValidate>
+                            <div class="row" style="color: white;">
+                                <div class="col-md-12">
+                                    <h2>Please specify your contribution for Tranche {{trancheData?.period}} from {{trancheData?.start_date}} - {{trancheData?.end_date}}</h2>
+                                </div>
+                                <hr />
+                                <div class="col-md-12">
+                                    <h4 class="col-md-4">
+                                        Total Pledged for 2018 cycle
+                                    </h4>
+                                    <h4 class="col-md-3">
+                                        Remaining Pledge Balance
+                                    </h4>
+                                    <h4 class="col-md-5">
+                                        Contribution for this Tranche
+                                    </h4>
+                                </div>
+                                <div class="col-md-12">
+                                    <h4 class="col-md-4">
+                                        {{pledgeData.total_pledged | currency}}
+                                    </h4>
+                                    <h4 class="col-md-3">
+                                        {{pledgeData.remaining_pledged | currency}}
+                                    </h4>
+                                    <h4 class="col-md-5">
+                                        <span class="col-md-3" style="line-height: 34px;">{{2700  | currency}}</span>
+                                        <span class="col-md-1" style="line-height: 34px;">* </span>
+                                        <span class="col-md-3"><input name="no_of_pledge" type="number" class="form-control" [(ngModel)] = "pledgeData.no_of_pledge"  [disabled]="is_saved" (ngModelChange) = "changeNoOfPledge()"/> </span>
+                                        <span class="col-md-1" style="line-height: 34px;"> = </span>
+                                        <span class="col-md-4"> <input name="pledged_amt" type="number" class="form-control" [(ngModel)] = "pledgeData.pledged_amt"  disabled /></span>
+                                    </h4>
+                                    <p style=" text-align: right; color: red; font-size: 15px; " *ngIf = "pledgeData.pledged_amt > pledgeData.remaining_pledged">
+                                        <span>Pledge Amount cannot be more than remaining amount</span>
+                                    </p>
+                                </div>
+                            </div>
+                            <hr>
+
+                            <div class="row">
+                                <div class="radio">
+                                    <label>
+                                    <input type="radio" value="1" name="paymentType" [(ngModel)]="pledgeData.payment_type" required #paymentType="ngModel" [disabled]="is_saved">
+<span>
+                                        Send your cheque for the contribution amount to Windem at:
+                                        <br />
+                                           <br />
+
+                                        WinDEM LLC
+                                        <br />
+                                        Attn: Accounts
+                                        <br />
+                                        198 Van Buren Street, Ste 200
+                                        <br />
+                                        Herdon, VA 20170
+                                        <br />
+
+                                        Questions? Call us at : (703) 709-3464</span>
+
+                                    </label>
+                                </div>
+                                <br />
+                                <div class="radio">
+                                    <label>
+                                    <input type="radio" value="2" name="paymentType" [(ngModel)]="pledgeData.payment_type" required  [disabled]="is_saved">
+                                       Wire the transfer to our bank account per the below instructions:
+                                       <br />
+                                        <br />
+
+                                        <a class="btn btn-default" href = "http://www.pdf995.com/samples/pdf.pdf" target="_blank">Download Wire-Transfer Information</a>
+                                       <br />
+                                        <br />
+
+                                        Bank:
+                                       <br />
+                                       PNC Bank, NA<br />
+                                       249 Fifth Avenue,<br />
+                                       Pittsburgh PA, 15222<br />
+                                       Bank Routing Number: 031000053 - wire<br />
+                                                            054000030 - ACH and Checks<br />
+                                       Swift Code: PNCCUS33<br />
+                                       For Credit to Account number: 5303649889<br />
+                                       <br />
+                                       Recipient:<br />
+                                       WinDEM LLC
+                                       <br />
+                                       198 Van Buren Street, Ste 200
+                                       <br />
+                                       Herdon, VA 20170
+                                       <br />
+
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="clearfix">&nbsp;</div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="text-right">
+                                        <button type="submit" class="btn custom-btn" (click)="pledgeBiweeklyContribution()" [disabled]="pledgeData.pledged_amt > pledgeData.remaining_pledged || is_saved || paymentType.errors || changePasswordForm.errors">Confirm Contribution to this Tranche</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>
